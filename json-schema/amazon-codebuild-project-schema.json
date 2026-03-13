@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/schemas/amazon/codebuild/project.json",
+  "title": "Amazon CodeBuild Project",
+  "description": "Represents an AWS CodeBuild build project with its source, environment, and build configuration.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the build project.",
+      "minLength": 2,
+      "maxLength": 255
+    },
+    "arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the build project.",
+      "pattern": "^arn:aws:codebuild:[a-z0-9-]+:[0-9]{12}:project/.+$"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description that makes the build project easy to identify.",
+      "maxLength": 255
+    },
+    "source": {
+      "type": "object",
+      "description": "Information about the build input source code.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of repository that contains the source code.",
+          "enum": ["CODECOMMIT", "CODEPIPELINE", "GITHUB", "GITHUB_ENTERPRISE", "BITBUCKET", "S3", "NO_SOURCE"]
+        },
+        "location": {
+          "type": "string",
+          "description": "Information about the location of the source code."
+        },
+        "buildspec": {
+          "type": "string",
+          "description": "The buildspec file declaration to use for the builds."
+        },
+        "gitCloneDepth": {
+          "type": "integer",
+          "description": "The depth of history to download."
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "description": "Information about the build environment.",
+      "required": ["type", "image", "computeType"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of build environment.",
+          "enum": ["WINDOWS_CONTAINER", "LINUX_CONTAINER", "LINUX_GPU_CONTAINER", "ARM_CONTAINER"]
+        },
+        "image": {
+          "type": "string",
+          "description": "The image tag or image digest that identifies the Docker image."
+        },
+        "computeType": {
+          "type": "string",
+          "description": "The type of compute environment.",
+          "enum": ["BUILD_GENERAL1_SMALL", "BUILD_GENERAL1_MEDIUM", "BUILD_GENERAL1_LARGE", "BUILD_GENERAL1_2XLARGE"]
+        },
+        "environmentVariables": {
+          "type": "array",
+          "description": "A set of environment variables to make available to builds.",
+          "items": {
+            "type": "object",
+            "required": ["name", "value"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["PLAINTEXT", "PARAMETER_STORE", "SECRETS_MANAGER"]
+              }
+            }
+          }
+        },
+        "privilegedMode": {
+          "type": "boolean",
+          "description": "Enables running the Docker daemon inside a Docker container."
+        }
+      }
+    },
+    "serviceRole": {
+      "type": "string",
+      "description": "The ARN of the IAM role that enables CodeBuild to access resources."
+    },
+    "timeoutInMinutes": {
+      "type": "integer",
+      "description": "How long, in minutes, from 5 to 480, for CodeBuild to wait before timing out.",
+      "minimum": 5,
+      "maximum": 480
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the build project was created."
+    },
+    "lastModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the build project's settings were last modified."
+    }
+  },
+  "additionalProperties": false
+}

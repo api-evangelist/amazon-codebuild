@@ -1,0 +1,498 @@
+openapi: 3.1.0
+info:
+  title: Amazon CodeBuild API
+  description: >-
+    AWS CodeBuild is a fully managed continuous integration service that compiles
+    source code, runs tests, and produces software packages that are ready to deploy.
+    With CodeBuild, you don't need to provision, manage, and scale your own build
+    servers. CodeBuild scales continuously and processes multiple builds concurrently.
+  version: '2016-10-06'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+externalDocs:
+  description: Amazon CodeBuild API Reference
+  url: https://docs.aws.amazon.com/codebuild/latest/APIReference/
+servers:
+  - url: https://codebuild.{region}.amazonaws.com
+    description: Amazon CodeBuild Regional Endpoint
+    variables:
+      region:
+        default: us-east-1
+        description: AWS Region
+tags:
+  - name: Projects
+    description: Operations for creating and managing build projects
+  - name: Builds
+    description: Operations for starting, stopping, and viewing builds
+  - name: Reports
+    description: Operations for managing build reports
+paths:
+  /projects:
+    post:
+      operationId: CreateProject
+      summary: Create a build project
+      description: >-
+        Creates a build project. A build project includes information about
+        how to run a build, including where to get the source code, which
+        build environment to use, which build commands to run, and where
+        to store the build output.
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+      responses:
+        '200':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateProjectResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+        '409':
+          description: Resource already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAlreadyExistsException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+    get:
+      operationId: ListProjects
+      summary: List build projects
+      description: >-
+        Gets a list of build project names, with each build project name
+        representing a single build project.
+      tags:
+        - Projects
+      parameters:
+        - name: sortBy
+          in: query
+          description: The criterion to sort the list of build projects.
+          schema:
+            type: string
+            enum:
+              - NAME
+              - CREATED_TIME
+              - LAST_MODIFIED_TIME
+        - name: sortOrder
+          in: query
+          description: The order to sort the list.
+          schema:
+            type: string
+            enum:
+              - ASCENDING
+              - DESCENDING
+        - name: nextToken
+          in: query
+          description: Token for pagination.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProjectsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+
+  /projects/{projectName}:
+    delete:
+      operationId: DeleteProject
+      summary: Delete a build project
+      description: >-
+        Deletes a build project. When you delete a project, its builds are not deleted.
+      tags:
+        - Projects
+      parameters:
+        - name: projectName
+          in: path
+          required: true
+          description: The name of the build project.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Project deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+
+  /builds/start:
+    post:
+      operationId: StartBuild
+      summary: Start a build
+      description: >-
+        Starts running a build with the settings defined in the project.
+      tags:
+        - Builds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartBuildRequest'
+      responses:
+        '200':
+          description: Build started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartBuildResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+
+  /builds/stop:
+    post:
+      operationId: StopBuild
+      summary: Stop a build
+      description: >-
+        Attempts to stop running a build.
+      tags:
+        - Builds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
+                  description: The ID of the build to stop.
+      responses:
+        '200':
+          description: Build stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopBuildResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+
+  /builds:
+    post:
+      operationId: BatchGetBuilds
+      summary: Get build details
+      description: >-
+        Gets information about one or more builds.
+      tags:
+        - Builds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - ids
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                  description: The IDs of the builds.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchGetBuildsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+
+components:
+  schemas:
+    CreateProjectRequest:
+      type: object
+      required:
+        - name
+        - source
+        - environment
+        - serviceRole
+      properties:
+        name:
+          type: string
+          description: The name of the build project.
+        description:
+          type: string
+          description: A description of the build project.
+        source:
+          type: object
+          required:
+            - type
+          properties:
+            type:
+              type: string
+              enum:
+                - CODECOMMIT
+                - CODEPIPELINE
+                - GITHUB
+                - GITHUB_ENTERPRISE
+                - BITBUCKET
+                - S3
+                - NO_SOURCE
+            location:
+              type: string
+            buildspec:
+              type: string
+        environment:
+          type: object
+          required:
+            - type
+            - image
+            - computeType
+          properties:
+            type:
+              type: string
+              enum:
+                - WINDOWS_CONTAINER
+                - LINUX_CONTAINER
+                - LINUX_GPU_CONTAINER
+                - ARM_CONTAINER
+            image:
+              type: string
+            computeType:
+              type: string
+              enum:
+                - BUILD_GENERAL1_SMALL
+                - BUILD_GENERAL1_MEDIUM
+                - BUILD_GENERAL1_LARGE
+                - BUILD_GENERAL1_2XLARGE
+            environmentVariables:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - PLAINTEXT
+                      - PARAMETER_STORE
+                      - SECRETS_MANAGER
+        serviceRole:
+          type: string
+          description: The ARN of the IAM role for CodeBuild.
+        timeoutInMinutes:
+          type: integer
+          description: Build timeout in minutes.
+
+    CreateProjectResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+
+    ListProjectsResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            type: string
+        nextToken:
+          type: string
+
+    Project:
+      type: object
+      properties:
+        name:
+          type: string
+        arn:
+          type: string
+        description:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+        serviceRole:
+          type: string
+
+    StartBuildRequest:
+      type: object
+      required:
+        - projectName
+      properties:
+        projectName:
+          type: string
+          description: The name of the CodeBuild build project.
+        sourceVersion:
+          type: string
+          description: The version of the build input to be built.
+        environmentVariablesOverride:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              type:
+                type: string
+
+    StartBuildResponse:
+      type: object
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+
+    StopBuildResponse:
+      type: object
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+
+    BatchGetBuildsResponse:
+      type: object
+      properties:
+        builds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Build'
+        buildsNotFound:
+          type: array
+          items:
+            type: string
+
+    Build:
+      type: object
+      properties:
+        id:
+          type: string
+        arn:
+          type: string
+        buildNumber:
+          type: integer
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        currentPhase:
+          type: string
+        buildStatus:
+          type: string
+          enum:
+            - SUCCEEDED
+            - FAILED
+            - FAULT
+            - TIMED_OUT
+            - IN_PROGRESS
+            - STOPPED
+        projectName:
+          type: string
+        sourceVersion:
+          type: string
+
+    InvalidInputException:
+      type: object
+      properties:
+        message:
+          type: string
+
+    ResourceAlreadyExistsException:
+      type: object
+      properties:
+        message:
+          type: string
+
+    ResourceNotFoundException:
+      type: object
+      properties:
+        message:
+          type: string
+
+    InternalServerException:
+      type: object
+      properties:
+        message:
+          type: string

@@ -1,0 +1,67 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "codebuild": "https://docs.aws.amazon.com/codebuild/latest/APIReference/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Project": {
+      "@id": "codebuild:Project",
+      "@context": {
+        "name": "schema:name",
+        "arn": "codebuild:arn",
+        "description": "schema:description",
+        "serviceRole": "codebuild:serviceRole",
+        "timeoutInMinutes": {
+          "@id": "codebuild:timeoutInMinutes",
+          "@type": "xsd:integer"
+        },
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "lastModified": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Build": {
+      "@id": "codebuild:Build",
+      "@context": {
+        "buildId": "codebuild:buildId",
+        "buildNumber": {
+          "@id": "codebuild:buildNumber",
+          "@type": "xsd:integer"
+        },
+        "buildStatus": "codebuild:buildStatus",
+        "currentPhase": "codebuild:currentPhase",
+        "projectName": "codebuild:projectName",
+        "sourceVersion": "codebuild:sourceVersion",
+        "startTime": {
+          "@id": "codebuild:startTime",
+          "@type": "xsd:dateTime"
+        },
+        "endTime": {
+          "@id": "codebuild:endTime",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "BuildEnvironment": {
+      "@id": "codebuild:BuildEnvironment",
+      "@context": {
+        "type": "codebuild:environmentType",
+        "image": "codebuild:image",
+        "computeType": "codebuild:computeType",
+        "privilegedMode": {
+          "@id": "codebuild:privilegedMode",
+          "@type": "xsd:boolean"
+        }
+      }
+    }
+  }
+}
