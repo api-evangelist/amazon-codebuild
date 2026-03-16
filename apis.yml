@@ -1,9 +1,17 @@
+aid: amazon-codebuild
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/apis.yml
 name: Amazon CodeBuild API
-description: AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces ready-to-deploy software packages, eliminating the need to provision, manage, and scale your own build servers.
-image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
-url: https://aws.amazon.com/codebuild/
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+specificationVersion: '0.19'
+description: >-
+  AWS CodeBuild is a fully managed continuous integration service that
+  compiles source code, runs tests, and produces ready-to-deploy software
+  packages, eliminating the need to provision, manage, and scale your own
+  build servers.
 created: '2024-01-15'
-modified: '2026-03-13'
+modified: '2026-03-16'
 apis:
 - name: Amazon CodeBuild API
   description: >-
