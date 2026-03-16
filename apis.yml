@@ -1,7 +1,7 @@
 aid: amazon-codebuild
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/apis.yml
-name: Amazon CodeBuild API
+name: Amazon CodeBuild
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 specificationVersion: '0.19'
