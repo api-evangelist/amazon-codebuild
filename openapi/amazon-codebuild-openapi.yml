@@ -32,7 +32,7 @@ paths:
   /projects:
     post:
       operationId: CreateProject
-      summary: Create a build project
+      summary: Amazon CodeBuild Create a build project
       description: >-
         Creates a build project. A build project includes information about
         how to run a build, including where to get the source code, which
@@ -73,7 +73,7 @@ paths:
                 $ref: '#/components/schemas/InternalServerException'
     get:
       operationId: ListProjects
-      summary: List build projects
+      summary: Amazon CodeBuild List build projects
       description: >-
         Gets a list of build project names, with each build project name
         representing a single build project.
@@ -125,7 +125,7 @@ paths:
   /projects/{projectName}:
     delete:
       operationId: DeleteProject
-      summary: Delete a build project
+      summary: Amazon CodeBuild Delete a build project
       description: >-
         Deletes a build project. When you delete a project, its builds are not deleted.
       tags:
@@ -156,7 +156,7 @@ paths:
   /builds/start:
     post:
       operationId: StartBuild
-      summary: Start a build
+      summary: Amazon CodeBuild Start a build
       description: >-
         Starts running a build with the settings defined in the project.
       tags:
@@ -196,7 +196,7 @@ paths:
   /builds/stop:
     post:
       operationId: StopBuild
-      summary: Stop a build
+      summary: Amazon CodeBuild Stop a build
       description: >-
         Attempts to stop running a build.
       tags:
@@ -242,7 +242,7 @@ paths:
   /builds:
     post:
       operationId: BatchGetBuilds
-      summary: Get build details
+      summary: Amazon CodeBuild Get build details
       description: >-
         Gets information about one or more builds.
       tags:
