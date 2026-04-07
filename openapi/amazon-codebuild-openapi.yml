@@ -22,12 +22,10 @@ servers:
         default: us-east-1
         description: AWS Region
 tags:
-  - name: Projects
-    description: Operations for creating and managing build projects
   - name: Builds
     description: Operations for starting, stopping, and viewing builds
-  - name: Reports
-    description: Operations for managing build reports
+  - name: Projects
+    description: Operations for creating and managing build projects
 paths:
   /projects:
     post:
