@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-retry-build-batch-type-structure.json",
+  "name": "RetryBuildBatchType",
+  "description": "RetryBuildBatchType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "RETRY_ALL_BUILDS",
+    "RETRY_FAILED_BUILDS"
+  ]
+}

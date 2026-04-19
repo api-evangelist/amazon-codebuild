@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-project-badge-schema.json",
+  "title": "ProjectBadge",
+  "description": "Information about the build badge for the build project.",
+  "type": "object",
+  "properties": {
+    "badgeEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Boolean"
+        },
+        {
+          "description": "Set this to true to generate a publicly accessible URL for your project's build badge."
+        }
+      ]
+    },
+    "badgeRequestUrl": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The publicly-accessible URL through which you can access the build badge for your project. "
+        }
+      ]
+    }
+  }
+}

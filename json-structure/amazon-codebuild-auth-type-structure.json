@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-auth-type-structure.json",
+  "name": "AuthType",
+  "description": "AuthType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "OAUTH",
+    "BASIC_AUTH",
+    "PERSONAL_ACCESS_TOKEN"
+  ]
+}

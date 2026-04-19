@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-compute-type-structure.json",
+  "name": "ComputeType",
+  "description": "ComputeType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "BUILD_GENERAL1_SMALL",
+    "BUILD_GENERAL1_MEDIUM",
+    "BUILD_GENERAL1_LARGE",
+    "BUILD_GENERAL1_2XLARGE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-create-project-output-structure.json",
+  "name": "CreateProjectOutput",
+  "description": "CreateProjectOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "project": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Project"
+        },
+        {
+          "description": "Information about the build project that was created."
+        }
+      ]
+    }
+  }
+}

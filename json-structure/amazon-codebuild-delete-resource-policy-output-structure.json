@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-delete-resource-policy-output-structure.json",
+  "name": "DeleteResourcePolicyOutput",
+  "description": "DeleteResourcePolicyOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {}
+}

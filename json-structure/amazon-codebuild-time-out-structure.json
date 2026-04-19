@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-time-out-structure.json",
+  "name": "TimeOut",
+  "description": "TimeOut schema from Amazon CodeBuild",
+  "type": "int32",
+  "minimum": 5,
+  "maximum": 480
+}

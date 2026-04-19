@@ -1,0 +1,10 @@
+{
+  "reportArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "testRawDataPath": "example-value",
+  "prefix": "example-value",
+  "name": "example-resource",
+  "status": "ACTIVE",
+  "durationInNanoSeconds": "example-value",
+  "message": "example-value",
+  "expired": "example-value"
+}

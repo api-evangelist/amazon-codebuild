@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-project-structure.json",
+  "name": "Project",
+  "description": "Project schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "arn": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "created": {
+      "type": "datetime"
+    },
+    "lastModified": {
+      "type": "datetime"
+    },
+    "serviceRole": {
+      "type": "string"
+    }
+  }
+}

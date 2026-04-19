@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-test-report-summary-schema.json",
+  "title": "TestReportSummary",
+  "description": " Information about a test report. ",
+  "type": "object",
+  "properties": {
+    "total": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperInt"
+        },
+        {
+          "description": " The number of test cases in this <code>TestReportSummary</code>. The total includes truncated test cases. "
+        }
+      ]
+    },
+    "statusCounts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportStatusCounts"
+        },
+        {
+          "description": " A map that contains the number of each type of status returned by the test results in this <code>TestReportSummary</code>. "
+        }
+      ]
+    },
+    "durationInNanoSeconds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperLong"
+        },
+        {
+          "description": " The number of nanoseconds it took to run all of the test cases in this report. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "total",
+    "statusCounts",
+    "durationInNanoSeconds"
+  ]
+}

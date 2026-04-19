@@ -1,0 +1,10 @@
+{
+  "type": "STANDARD",
+  "location": "example-value",
+  "path": "example-value",
+  "namespaceType": "example-resource",
+  "name": "example-resource",
+  "packaging": "example-value",
+  "overrideArtifactName": "500123",
+  "encryptionDisabled": "example-value"
+}

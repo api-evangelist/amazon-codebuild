@@ -1,0 +1,7 @@
+{
+  "reportGroupArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "nextToken": "example-value",
+  "sortOrder": "example-value",
+  "maxResults": "example-value",
+  "filter": "example-value"
+}

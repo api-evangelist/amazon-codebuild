@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-update-report-group-output-schema.json",
+  "title": "UpdateReportGroupOutput",
+  "description": "UpdateReportGroupOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "reportGroup": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportGroup"
+        },
+        {
+          "description": " Information about the updated report group. "
+        }
+      ]
+    }
+  }
+}

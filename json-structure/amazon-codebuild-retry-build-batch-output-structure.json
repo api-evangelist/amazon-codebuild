@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-retry-build-batch-output-structure.json",
+  "name": "RetryBuildBatchOutput",
+  "description": "RetryBuildBatchOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "buildBatch": {
+      "$ref": "#/components/schemas/BuildBatch"
+    }
+  }
+}

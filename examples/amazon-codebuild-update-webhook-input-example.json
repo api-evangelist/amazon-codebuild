@@ -1,0 +1,7 @@
+{
+  "projectName": "example-resource",
+  "branchFilter": "example-value",
+  "rotateSecret": "example-value",
+  "filterGroups": "example-value",
+  "buildType": "STANDARD"
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-report-code-coverage-sort-by-type-structure.json",
+  "name": "ReportCodeCoverageSortByType",
+  "description": "ReportCodeCoverageSortByType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "LINE_COVERAGE_PERCENTAGE",
+    "FILE_PATH"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-list-build-batches-for-project-output-structure.json",
+  "name": "ListBuildBatchesForProjectOutput",
+  "description": "ListBuildBatchesForProjectOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "ids": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildBatchIds"
+        },
+        {
+          "description": "An array of strings that contains the batch build identifiers."
+        }
+      ]
+    },
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "If there are more items to return, this contains a token that is passed to a subsequent call to <code>ListBuildBatchesForProject</code> to retrieve the next set of items."
+        }
+      ]
+    }
+  }
+}

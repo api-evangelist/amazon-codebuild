@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-git-clone-depth-structure.json",
+  "name": "GitCloneDepth",
+  "description": "GitCloneDepth schema from Amazon CodeBuild",
+  "type": "int32",
+  "minimum": 0
+}

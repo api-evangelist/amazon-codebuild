@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-report-group-trend-raw-data-list-structure.json",
+  "name": "ReportGroupTrendRawDataList",
+  "description": "ReportGroupTrendRawDataList schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ReportWithRawData"
+  }
+}

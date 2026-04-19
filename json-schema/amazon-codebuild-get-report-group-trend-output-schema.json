@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-get-report-group-trend-output-schema.json",
+  "title": "GetReportGroupTrendOutput",
+  "description": "GetReportGroupTrendOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "stats": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportGroupTrendStats"
+        },
+        {
+          "description": "Contains the accumulated trend data."
+        }
+      ]
+    },
+    "rawData": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportGroupTrendRawDataList"
+        },
+        {
+          "description": "An array that contains the raw data for each report."
+        }
+      ]
+    }
+  }
+}

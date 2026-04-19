@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-filter-schema.json",
+  "title": "ReportFilter",
+  "description": " A filter used to return reports with the status specified by the input <code>status</code> parameter. ",
+  "type": "object",
+  "properties": {
+    "status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportStatusType"
+        },
+        {
+          "description": " The status used to filter reports. You can filter using one status only. "
+        }
+      ]
+    }
+  }
+}

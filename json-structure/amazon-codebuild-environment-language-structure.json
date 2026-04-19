@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-environment-language-structure.json",
+  "name": "EnvironmentLanguage",
+  "description": "A set of Docker images that are related by programming language and are managed by CodeBuild.",
+  "type": "object",
+  "properties": {
+    "language": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LanguageType"
+        },
+        {
+          "description": "The programming language for the Docker images."
+        }
+      ]
+    },
+    "images": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EnvironmentImages"
+        },
+        {
+          "description": "The list of Docker images that are related by the specified programming language."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-environment-variable-type-structure.json",
+  "name": "EnvironmentVariableType",
+  "description": "EnvironmentVariableType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "PLAINTEXT",
+    "PARAMETER_STORE",
+    "SECRETS_MANAGER"
+  ]
+}

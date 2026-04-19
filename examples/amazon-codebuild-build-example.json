@@ -1,0 +1,10 @@
+{
+  "id": "500123",
+  "arn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "buildNumber": 1,
+  "startTime": "example-value",
+  "endTime": "example-value",
+  "currentPhase": "example-value",
+  "buildStatus": "SUCCEEDED",
+  "projectName": "example-resource"
+}

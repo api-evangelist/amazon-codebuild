@@ -1,0 +1,1639 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon CodeBuild
+  description: Fully managed continuous integration service for compiling source code, running tests, and producing deployment-ready artifacts.
+  tags:
+  - Amazon
+  - AWS
+  - CI/CD
+  - Build
+  - DevOps
+  - Continuous Integration
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - type: http
+    namespace: codebuild
+    baseUri: http://codebuild.us-east-1.amazonaws.com
+    description: Amazon CodeBuild REST API for managing build projects and builds.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{AWS_AUTH_TOKEN}}'
+      placement: header
+    resources:
+    - name: ''
+      path: /
+      description: 'Operations for '
+      operations:
+      - name: batchDeleteBuilds
+        method: POST
+        description: Amazon CodeBuild Batch Delete Builds
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: batchGetBuildBatches
+        method: POST
+        description: Amazon CodeBuild Batch Get Build Batches
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: batchGetBuilds
+        method: POST
+        description: Amazon CodeBuild Batch Get Builds
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: batchGetProjects
+        method: POST
+        description: Amazon CodeBuild Batch Get Projects
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: batchGetReportGroups
+        method: POST
+        description: Amazon CodeBuild Batch Get Report Groups
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: batchGetReports
+        method: POST
+        description: Amazon CodeBuild Batch Get Reports
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: createProject
+        method: POST
+        description: Amazon CodeBuild Create Project
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: createReportGroup
+        method: POST
+        description: Amazon CodeBuild Create Report Group
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: createWebhook
+        method: POST
+        description: Amazon CodeBuild Create Webhook
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteBuildBatch
+        method: POST
+        description: Amazon CodeBuild Delete Build Batch
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteProject
+        method: POST
+        description: Amazon CodeBuild Delete Project
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteReport
+        method: POST
+        description: Amazon CodeBuild Delete Report
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteReportGroup
+        method: POST
+        description: Amazon CodeBuild Delete Report Group
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteResourcePolicy
+        method: POST
+        description: Amazon CodeBuild Delete Resource Policy
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteSourceCredentials
+        method: POST
+        description: Amazon CodeBuild Delete Source Credentials
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: deleteWebhook
+        method: POST
+        description: Amazon CodeBuild Delete Webhook
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: describeCodeCoverages
+        method: POST
+        description: Amazon CodeBuild Describe Code Coverages
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: describeTestCases
+        method: POST
+        description: Amazon CodeBuild Describe Test Cases
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: getReportGroupTrend
+        method: POST
+        description: Amazon CodeBuild Get Report Group Trend
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: getResourcePolicy
+        method: POST
+        description: Amazon CodeBuild Get Resource Policy
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: importSourceCredentials
+        method: POST
+        description: Amazon CodeBuild Import Source Credentials
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: invalidateProjectCache
+        method: POST
+        description: Amazon CodeBuild Invalidate Project Cache
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listBuildBatches
+        method: POST
+        description: Amazon CodeBuild List Build Batches
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listBuildBatchesForProject
+        method: POST
+        description: Amazon CodeBuild List Build Batches for Project
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listBuilds
+        method: POST
+        description: Amazon CodeBuild List Builds
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listBuildsForProject
+        method: POST
+        description: Amazon CodeBuild List Builds for Project
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listCuratedEnvironmentImages
+        method: POST
+        description: Amazon CodeBuild List Curated Environment Images
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listProjects
+        method: POST
+        description: Amazon CodeBuild List Projects
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listReportGroups
+        method: POST
+        description: Amazon CodeBuild List Report Groups
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listReports
+        method: POST
+        description: Amazon CodeBuild List Reports
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listReportsForReportGroup
+        method: POST
+        description: Amazon CodeBuild List Reports for Report Group
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listSharedProjects
+        method: POST
+        description: Amazon CodeBuild List Shared Projects
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listSharedReportGroups
+        method: POST
+        description: Amazon CodeBuild List Shared Report Groups
+        inputParameters:
+        - name: maxResults
+          in: query
+          type: string
+          required: false
+          description: Pagination limit
+        - name: nextToken
+          in: query
+          type: string
+          required: false
+          description: Pagination token
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: listSourceCredentials
+        method: POST
+        description: Amazon CodeBuild List Source Credentials
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: putResourcePolicy
+        method: POST
+        description: Amazon CodeBuild Put Resource Policy
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: retryBuild
+        method: POST
+        description: Amazon CodeBuild Retry Build
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: retryBuildBatch
+        method: POST
+        description: Amazon CodeBuild Retry Build Batch
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: startBuild
+        method: POST
+        description: Amazon CodeBuild Start Build
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: startBuildBatch
+        method: POST
+        description: Amazon CodeBuild Start Build Batch
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: stopBuild
+        method: POST
+        description: Amazon CodeBuild Stop Build
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: stopBuildBatch
+        method: POST
+        description: Amazon CodeBuild Stop Build Batch
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: updateProject
+        method: POST
+        description: Amazon CodeBuild Update Project
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: updateProjectVisibility
+        method: POST
+        description: Amazon CodeBuild Update Project Visibility
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: updateReportGroup
+        method: POST
+        description: Amazon CodeBuild Update Report Group
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+      - name: updateWebhook
+        method: POST
+        description: Amazon CodeBuild Update Webhook
+        inputParameters:
+        - name: X-Amz-Target
+          in: header
+          type: string
+          required: true
+          description: ''
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data: {}
+  exposes:
+  - type: rest
+    port: 8100
+    namespace: codebuild-rest
+    resources:
+    - path: /v1/
+      name: ''
+      description: 'REST for '
+      operations:
+      - method: POST
+        name: batchDeleteBuilds
+        description: Amazon CodeBuild Batch Delete Builds
+        call: codebuild.batchDeleteBuilds
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: batchGetBuildBatches
+        description: Amazon CodeBuild Batch Get Build Batches
+        call: codebuild.batchGetBuildBatches
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: batchGetBuilds
+        description: Amazon CodeBuild Batch Get Builds
+        call: codebuild.batchGetBuilds
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: batchGetProjects
+        description: Amazon CodeBuild Batch Get Projects
+        call: codebuild.batchGetProjects
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: batchGetReportGroups
+        description: Amazon CodeBuild Batch Get Report Groups
+        call: codebuild.batchGetReportGroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: batchGetReports
+        description: Amazon CodeBuild Batch Get Reports
+        call: codebuild.batchGetReports
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createProject
+        description: Amazon CodeBuild Create Project
+        call: codebuild.createProject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createReportGroup
+        description: Amazon CodeBuild Create Report Group
+        call: codebuild.createReportGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createWebhook
+        description: Amazon CodeBuild Create Webhook
+        call: codebuild.createWebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteBuildBatch
+        description: Amazon CodeBuild Delete Build Batch
+        call: codebuild.deleteBuildBatch
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteProject
+        description: Amazon CodeBuild Delete Project
+        call: codebuild.deleteProject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteReport
+        description: Amazon CodeBuild Delete Report
+        call: codebuild.deleteReport
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteReportGroup
+        description: Amazon CodeBuild Delete Report Group
+        call: codebuild.deleteReportGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteResourcePolicy
+        description: Amazon CodeBuild Delete Resource Policy
+        call: codebuild.deleteResourcePolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteSourceCredentials
+        description: Amazon CodeBuild Delete Source Credentials
+        call: codebuild.deleteSourceCredentials
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: deleteWebhook
+        description: Amazon CodeBuild Delete Webhook
+        call: codebuild.deleteWebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: describeCodeCoverages
+        description: Amazon CodeBuild Describe Code Coverages
+        call: codebuild.describeCodeCoverages
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: describeTestCases
+        description: Amazon CodeBuild Describe Test Cases
+        call: codebuild.describeTestCases
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: getReportGroupTrend
+        description: Amazon CodeBuild Get Report Group Trend
+        call: codebuild.getReportGroupTrend
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: getResourcePolicy
+        description: Amazon CodeBuild Get Resource Policy
+        call: codebuild.getResourcePolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: importSourceCredentials
+        description: Amazon CodeBuild Import Source Credentials
+        call: codebuild.importSourceCredentials
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: invalidateProjectCache
+        description: Amazon CodeBuild Invalidate Project Cache
+        call: codebuild.invalidateProjectCache
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listBuildBatches
+        description: Amazon CodeBuild List Build Batches
+        call: codebuild.listBuildBatches
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listBuildBatchesForProject
+        description: Amazon CodeBuild List Build Batches for Project
+        call: codebuild.listBuildBatchesForProject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listBuilds
+        description: Amazon CodeBuild List Builds
+        call: codebuild.listBuilds
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listBuildsForProject
+        description: Amazon CodeBuild List Builds for Project
+        call: codebuild.listBuildsForProject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listCuratedEnvironmentImages
+        description: Amazon CodeBuild List Curated Environment Images
+        call: codebuild.listCuratedEnvironmentImages
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listProjects
+        description: Amazon CodeBuild List Projects
+        call: codebuild.listProjects
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listReportGroups
+        description: Amazon CodeBuild List Report Groups
+        call: codebuild.listReportGroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listReports
+        description: Amazon CodeBuild List Reports
+        call: codebuild.listReports
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listReportsForReportGroup
+        description: Amazon CodeBuild List Reports for Report Group
+        call: codebuild.listReportsForReportGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listSharedProjects
+        description: Amazon CodeBuild List Shared Projects
+        call: codebuild.listSharedProjects
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listSharedReportGroups
+        description: Amazon CodeBuild List Shared Report Groups
+        call: codebuild.listSharedReportGroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: listSourceCredentials
+        description: Amazon CodeBuild List Source Credentials
+        call: codebuild.listSourceCredentials
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: putResourcePolicy
+        description: Amazon CodeBuild Put Resource Policy
+        call: codebuild.putResourcePolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: retryBuild
+        description: Amazon CodeBuild Retry Build
+        call: codebuild.retryBuild
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: retryBuildBatch
+        description: Amazon CodeBuild Retry Build Batch
+        call: codebuild.retryBuildBatch
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: startBuild
+        description: Amazon CodeBuild Start Build
+        call: codebuild.startBuild
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: startBuildBatch
+        description: Amazon CodeBuild Start Build Batch
+        call: codebuild.startBuildBatch
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: stopBuild
+        description: Amazon CodeBuild Stop Build
+        call: codebuild.stopBuild
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: stopBuildBatch
+        description: Amazon CodeBuild Stop Build Batch
+        call: codebuild.stopBuildBatch
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateProject
+        description: Amazon CodeBuild Update Project
+        call: codebuild.updateProject
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateProjectVisibility
+        description: Amazon CodeBuild Update Project Visibility
+        call: codebuild.updateProjectVisibility
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateReportGroup
+        description: Amazon CodeBuild Update Report Group
+        call: codebuild.updateReportGroup
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateWebhook
+        description: Amazon CodeBuild Update Webhook
+        call: codebuild.updateWebhook
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9100
+    namespace: codebuild-mcp
+    transport: http
+    tools:
+    - name: codebuild-batchDeleteBuilds
+      description: Amazon CodeBuild Batch Delete Builds
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.batchDeleteBuilds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-batchGetBuildBatches
+      description: Amazon CodeBuild Batch Get Build Batches
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.batchGetBuildBatches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-batchGetBuilds
+      description: Amazon CodeBuild Batch Get Builds
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.batchGetBuilds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-batchGetProjects
+      description: Amazon CodeBuild Batch Get Projects
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.batchGetProjects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-batchGetReportGroups
+      description: Amazon CodeBuild Batch Get Report Groups
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.batchGetReportGroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-batchGetReports
+      description: Amazon CodeBuild Batch Get Reports
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.batchGetReports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-createProject
+      description: Amazon CodeBuild Create Project
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.createProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-createReportGroup
+      description: Amazon CodeBuild Create Report Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.createReportGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-createWebhook
+      description: Amazon CodeBuild Create Webhook
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.createWebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteBuildBatch
+      description: Amazon CodeBuild Delete Build Batch
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteBuildBatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteProject
+      description: Amazon CodeBuild Delete Project
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteReport
+      description: Amazon CodeBuild Delete Report
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteReport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteReportGroup
+      description: Amazon CodeBuild Delete Report Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteReportGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteResourcePolicy
+      description: Amazon CodeBuild Delete Resource Policy
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteResourcePolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteSourceCredentials
+      description: Amazon CodeBuild Delete Source Credentials
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteSourceCredentials
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-deleteWebhook
+      description: Amazon CodeBuild Delete Webhook
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.deleteWebhook
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-describeCodeCoverages
+      description: Amazon CodeBuild Describe Code Coverages
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.describeCodeCoverages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-describeTestCases
+      description: Amazon CodeBuild Describe Test Cases
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.describeTestCases
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-getReportGroupTrend
+      description: Amazon CodeBuild Get Report Group Trend
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.getReportGroupTrend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-getResourcePolicy
+      description: Amazon CodeBuild Get Resource Policy
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.getResourcePolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-importSourceCredentials
+      description: Amazon CodeBuild Import Source Credentials
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.importSourceCredentials
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-invalidateProjectCache
+      description: Amazon CodeBuild Invalidate Project Cache
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.invalidateProjectCache
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listBuildBatches
+      description: Amazon CodeBuild List Build Batches
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listBuildBatches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listBuildBatchesForProject
+      description: Amazon CodeBuild List Build Batches for Project
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listBuildBatchesForProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listBuilds
+      description: Amazon CodeBuild List Builds
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listBuilds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listBuildsForProject
+      description: Amazon CodeBuild List Builds for Project
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listBuildsForProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listCuratedEnvironmentImages
+      description: Amazon CodeBuild List Curated Environment Images
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listCuratedEnvironmentImages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listProjects
+      description: Amazon CodeBuild List Projects
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listProjects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listReportGroups
+      description: Amazon CodeBuild List Report Groups
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listReportGroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listReports
+      description: Amazon CodeBuild List Reports
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listReports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listReportsForReportGroup
+      description: Amazon CodeBuild List Reports for Report Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listReportsForReportGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listSharedProjects
+      description: Amazon CodeBuild List Shared Projects
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listSharedProjects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listSharedReportGroups
+      description: Amazon CodeBuild List Shared Report Groups
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listSharedReportGroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-listSourceCredentials
+      description: Amazon CodeBuild List Source Credentials
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.listSourceCredentials
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-putResourcePolicy
+      description: Amazon CodeBuild Put Resource Policy
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.putResourcePolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-retryBuild
+      description: Amazon CodeBuild Retry Build
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.retryBuild
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-retryBuildBatch
+      description: Amazon CodeBuild Retry Build Batch
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.retryBuildBatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-startBuild
+      description: Amazon CodeBuild Start Build
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.startBuild
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-startBuildBatch
+      description: Amazon CodeBuild Start Build Batch
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.startBuildBatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-stopBuild
+      description: Amazon CodeBuild Stop Build
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.stopBuild
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-stopBuildBatch
+      description: Amazon CodeBuild Stop Build Batch
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.stopBuildBatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-updateProject
+      description: Amazon CodeBuild Update Project
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.updateProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-updateProjectVisibility
+      description: Amazon CodeBuild Update Project Visibility
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.updateProjectVisibility
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-updateReportGroup
+      description: Amazon CodeBuild Update Report Group
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.updateReportGroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: codebuild-updateWebhook
+      description: Amazon CodeBuild Update Webhook
+      hints:
+        readOnly: false
+        openWorld: true
+      call: codebuild.updateWebhook
+      outputParameters:
+      - type: object
+        mapping: $.

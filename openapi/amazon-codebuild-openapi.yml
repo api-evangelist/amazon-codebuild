@@ -15,35 +15,54 @@ externalDocs:
   description: Amazon CodeBuild API Reference
   url: https://docs.aws.amazon.com/codebuild/latest/APIReference/
 servers:
-  - url: https://codebuild.{region}.amazonaws.com
-    description: Amazon CodeBuild Regional Endpoint
-    variables:
-      region:
-        default: us-east-1
-        description: AWS Region
+- url: https://codebuild.{region}.amazonaws.com
+  description: Amazon CodeBuild Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
 tags:
-  - name: Builds
-    description: Operations for starting, stopping, and viewing builds
-  - name: Projects
-    description: Operations for creating and managing build projects
+- name: Builds
+  description: Operations for starting, stopping, and viewing builds
+- name: Projects
+  description: Operations for creating and managing build projects
 paths:
   /projects:
     post:
       operationId: CreateProject
-      summary: Amazon CodeBuild Create a build project
+      summary: Amazon CodeBuild Create a Build Project
       description: >-
         Creates a build project. A build project includes information about
         how to run a build, including where to get the source code, which
         build environment to use, which build commands to run, and where
         to store the build output.
       tags:
-        - Projects
+      - Projects
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateProjectRequest'
+            examples:
+              CreateProjectRequestExample:
+                summary: Default CreateProject request
+                x-microcks-default: true
+                value:
+                  name: example-resource
+                  description: Example description
+                  source:
+                    type: CODECOMMIT
+                    location: example-value
+                    buildspec: example-value
+                  environment:
+                    type: WINDOWS_CONTAINER
+                    image: example-value
+                    computeType: BUILD_GENERAL1_SMALL
+                    environmentVariables:
+                    - {}
+                  serviceRole: example-value
+                  timeoutInMinutes: 1718153645993
       responses:
         '200':
           description: Project created successfully
@@ -51,55 +70,88 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateProjectResponse'
+              examples:
+                CreateProject200Example:
+                  summary: Default CreateProject 200 response
+                  x-microcks-default: true
+                  value:
+                    project:
+                      name: example-resource
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      description: Example description
+                      created: example-value
+                      lastModified: example-value
+                      serviceRole: example-value
         '400':
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                CreateProject400Example:
+                  summary: Default CreateProject 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '409':
           description: Resource already exists
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceAlreadyExistsException'
+              examples:
+                CreateProject409Example:
+                  summary: Default CreateProject 409 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '500':
           description: Internal server error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InternalServerException'
+              examples:
+                CreateProject500Example:
+                  summary: Default CreateProject 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       operationId: ListProjects
-      summary: Amazon CodeBuild List build projects
+      summary: Amazon CodeBuild List Build Projects
       description: >-
         Gets a list of build project names, with each build project name
         representing a single build project.
       tags:
-        - Projects
+      - Projects
       parameters:
-        - name: sortBy
-          in: query
-          description: The criterion to sort the list of build projects.
-          schema:
-            type: string
-            enum:
-              - NAME
-              - CREATED_TIME
-              - LAST_MODIFIED_TIME
-        - name: sortOrder
-          in: query
-          description: The order to sort the list.
-          schema:
-            type: string
-            enum:
-              - ASCENDING
-              - DESCENDING
-        - name: nextToken
-          in: query
-          description: Token for pagination.
-          schema:
-            type: string
+      - name: sortBy
+        in: query
+        description: The criterion to sort the list of build projects.
+        schema:
+          type: string
+          enum:
+          - NAME
+          - CREATED_TIME
+          - LAST_MODIFIED_TIME
+      - name: sortOrder
+        in: query
+        description: The order to sort the list.
+        schema:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+      - name: nextToken
+        in: query
+        description: Token for pagination.
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -107,12 +159,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListProjectsResponse'
+              examples:
+                ListProjects200Example:
+                  summary: Default ListProjects 200 response
+                  x-microcks-default: true
+                  value:
+                    projects:
+                    - example-value
+                    nextToken: example-value
         '400':
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                ListProjects400Example:
+                  summary: Default ListProjects 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '500':
           description: Internal server error
           content:
@@ -120,21 +186,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerException'
 
+              examples:
+                ListProjects500Example:
+                  summary: Default ListProjects 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /projects/{projectName}:
     delete:
       operationId: DeleteProject
-      summary: Amazon CodeBuild Delete a build project
+      summary: Amazon CodeBuild Delete a Build Project
       description: >-
         Deletes a build project. When you delete a project, its builds are not deleted.
       tags:
-        - Projects
+      - Projects
       parameters:
-        - name: projectName
-          in: path
-          required: true
-          description: The name of the build project.
-          schema:
-            type: string
+      - name: projectName
+        in: path
+        required: true
+        description: The name of the build project.
+        schema:
+          type: string
       responses:
         '200':
           description: Project deleted
@@ -144,6 +219,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                DeleteProject400Example:
+                  summary: Default DeleteProject 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '500':
           description: Internal server error
           content:
@@ -151,20 +232,40 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerException'
 
+              examples:
+                DeleteProject500Example:
+                  summary: Default DeleteProject 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /builds/start:
     post:
       operationId: StartBuild
-      summary: Amazon CodeBuild Start a build
+      summary: Amazon CodeBuild Start a Build
       description: >-
         Starts running a build with the settings defined in the project.
       tags:
-        - Builds
+      - Builds
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/StartBuildRequest'
+            examples:
+              StartBuildRequestExample:
+                summary: Default StartBuild request
+                x-microcks-default: true
+                value:
+                  projectName: example-resource
+                  sourceVersion: 1.0.0
+                  environmentVariablesOverride:
+                  - name: example-resource
+                    value: example-value
+                    type: STANDARD
       responses:
         '200':
           description: Build started successfully
@@ -172,18 +273,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBuildResponse'
+              examples:
+                StartBuild200Example:
+                  summary: Default StartBuild 200 response
+                  x-microcks-default: true
+                  value:
+                    build:
+                      id: '500123'
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      buildNumber: 1
+                      startTime: example-value
+                      endTime: example-value
+                      currentPhase: example-value
+                      buildStatus: SUCCEEDED
+                      projectName: example-resource
         '400':
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                StartBuild400Example:
+                  summary: Default StartBuild 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '404':
           description: Resource not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                StartBuild404Example:
+                  summary: Default StartBuild 404 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '500':
           description: Internal server error
           content:
@@ -191,14 +318,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerException'
 
+              examples:
+                StartBuild500Example:
+                  summary: Default StartBuild 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /builds/stop:
     post:
       operationId: StopBuild
-      summary: Amazon CodeBuild Stop a build
+      summary: Amazon CodeBuild Stop a Build
       description: >-
         Attempts to stop running a build.
       tags:
-        - Builds
+      - Builds
       requestBody:
         required: true
         content:
@@ -206,11 +342,17 @@ paths:
             schema:
               type: object
               required:
-                - id
+              - id
               properties:
                 id:
                   type: string
                   description: The ID of the build to stop.
+            examples:
+              StopBuildRequestExample:
+                summary: Default StopBuild request
+                x-microcks-default: true
+                value:
+                  id: '500123'
       responses:
         '200':
           description: Build stopped
@@ -218,18 +360,44 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBuildResponse'
+              examples:
+                StopBuild200Example:
+                  summary: Default StopBuild 200 response
+                  x-microcks-default: true
+                  value:
+                    build:
+                      id: '500123'
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      buildNumber: 1
+                      startTime: example-value
+                      endTime: example-value
+                      currentPhase: example-value
+                      buildStatus: SUCCEEDED
+                      projectName: example-resource
         '400':
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                StopBuild400Example:
+                  summary: Default StopBuild 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '404':
           description: Resource not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                StopBuild404Example:
+                  summary: Default StopBuild 404 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '500':
           description: Internal server error
           content:
@@ -237,14 +405,23 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerException'
 
+              examples:
+                StopBuild500Example:
+                  summary: Default StopBuild 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /builds:
     post:
       operationId: BatchGetBuilds
-      summary: Amazon CodeBuild Get build details
+      summary: Amazon CodeBuild Get Build Details
       description: >-
         Gets information about one or more builds.
       tags:
-        - Builds
+      - Builds
       requestBody:
         required: true
         content:
@@ -252,13 +429,20 @@ paths:
             schema:
               type: object
               required:
-                - ids
+              - ids
               properties:
                 ids:
                   type: array
                   items:
                     type: string
                   description: The IDs of the builds.
+            examples:
+              BatchGetBuildsRequestExample:
+                summary: Default BatchGetBuilds request
+                x-microcks-default: true
+                value:
+                  ids:
+                  - '500123'
       responses:
         '200':
           description: Successful response
@@ -266,12 +450,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetBuildsResponse'
+              examples:
+                BatchGetBuilds200Example:
+                  summary: Default BatchGetBuilds 200 response
+                  x-microcks-default: true
+                  value:
+                    builds:
+                    - id: '500123'
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      buildNumber: 1
+                      startTime: example-value
+                      endTime: example-value
+                      currentPhase: example-value
+                      buildStatus: SUCCEEDED
+                      projectName: example-resource
+                    buildsNotFound:
+                    - example-value
         '400':
           description: Bad request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                BatchGetBuilds400Example:
+                  summary: Default BatchGetBuilds 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
         '500':
           description: Internal server error
           content:
@@ -279,15 +485,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerException'
 
+              examples:
+                BatchGetBuilds500Example:
+                  summary: Default BatchGetBuilds 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   schemas:
     CreateProjectRequest:
       type: object
       required:
-        - name
-        - source
-        - environment
-        - serviceRole
+      - name
+      - source
+      - environment
+      - serviceRole
       properties:
         name:
           type: string
@@ -298,18 +513,18 @@ components:
         source:
           type: object
           required:
-            - type
+          - type
           properties:
             type:
               type: string
               enum:
-                - CODECOMMIT
-                - CODEPIPELINE
-                - GITHUB
-                - GITHUB_ENTERPRISE
-                - BITBUCKET
-                - S3
-                - NO_SOURCE
+              - CODECOMMIT
+              - CODEPIPELINE
+              - GITHUB
+              - GITHUB_ENTERPRISE
+              - BITBUCKET
+              - S3
+              - NO_SOURCE
             location:
               type: string
             buildspec:
@@ -317,26 +532,26 @@ components:
         environment:
           type: object
           required:
-            - type
-            - image
-            - computeType
+          - type
+          - image
+          - computeType
           properties:
             type:
               type: string
               enum:
-                - WINDOWS_CONTAINER
-                - LINUX_CONTAINER
-                - LINUX_GPU_CONTAINER
-                - ARM_CONTAINER
+              - WINDOWS_CONTAINER
+              - LINUX_CONTAINER
+              - LINUX_GPU_CONTAINER
+              - ARM_CONTAINER
             image:
               type: string
             computeType:
               type: string
               enum:
-                - BUILD_GENERAL1_SMALL
-                - BUILD_GENERAL1_MEDIUM
-                - BUILD_GENERAL1_LARGE
-                - BUILD_GENERAL1_2XLARGE
+              - BUILD_GENERAL1_SMALL
+              - BUILD_GENERAL1_MEDIUM
+              - BUILD_GENERAL1_LARGE
+              - BUILD_GENERAL1_2XLARGE
             environmentVariables:
               type: array
               items:
@@ -349,9 +564,9 @@ components:
                   type:
                     type: string
                     enum:
-                      - PLAINTEXT
-                      - PARAMETER_STORE
-                      - SECRETS_MANAGER
+                    - PLAINTEXT
+                    - PARAMETER_STORE
+                    - SECRETS_MANAGER
         serviceRole:
           type: string
           description: The ARN of the IAM role for CodeBuild.
@@ -396,7 +611,7 @@ components:
     StartBuildRequest:
       type: object
       required:
-        - projectName
+      - projectName
       properties:
         projectName:
           type: string
@@ -460,12 +675,12 @@ components:
         buildStatus:
           type: string
           enum:
-            - SUCCEEDED
-            - FAILED
-            - FAULT
-            - TIMED_OUT
-            - IN_PROGRESS
-            - STOPPED
+          - SUCCEEDED
+          - FAILED
+          - FAULT
+          - TIMED_OUT
+          - IN_PROGRESS
+          - STOPPED
         projectName:
           type: string
         sourceVersion:

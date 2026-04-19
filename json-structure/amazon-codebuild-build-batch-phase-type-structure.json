@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-build-batch-phase-type-structure.json",
+  "name": "BuildBatchPhaseType",
+  "description": "BuildBatchPhaseType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "SUBMITTED",
+    "DOWNLOAD_BATCHSPEC",
+    "IN_PROGRESS",
+    "COMBINE_ARTIFACTS",
+    "SUCCEEDED",
+    "FAILED",
+    "STOPPED"
+  ]
+}

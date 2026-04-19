@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-invalidate-project-cache-input-structure.json",
+  "name": "InvalidateProjectCacheInput",
+  "description": "InvalidateProjectCacheInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The name of the CodeBuild build project that the cache is reset for."
+        }
+      ]
+    }
+  },
+  "required": [
+    "projectName"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-test-case-structure.json",
+  "name": "TestCase",
+  "description": " Information about a test case created using a framework such as NUnit or Cucumber. A test case might be a unit test or a configuration test. ",
+  "type": "object",
+  "properties": {
+    "reportArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " The ARN of the report to which the test case belongs. "
+        }
+      ]
+    },
+    "testRawDataPath": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The path to the raw data file that contains the test result. "
+        }
+      ]
+    },
+    "prefix": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " A string that is applied to a series of related test cases. CodeBuild generates the prefix. The prefix depends on the framework used to generate the tests. "
+        }
+      ]
+    },
+    "name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The name of the test case. "
+        }
+      ]
+    },
+    "status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The status returned by the test case after it was run. Valid statuses are <code>SUCCEEDED</code>, <code>FAILED</code>, <code>ERROR</code>, <code>SKIPPED</code>, and <code>UNKNOWN</code>. "
+        }
+      ]
+    },
+    "durationInNanoSeconds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperLong"
+        },
+        {
+          "description": " The number of nanoseconds it took to run this test case. "
+        }
+      ]
+    },
+    "message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " A message associated with a test case. For example, an error message or stack trace. "
+        }
+      ]
+    },
+    "expired": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": " The date and time a test case expires. A test case expires 30 days after it is created. An expired test case is not available to view in CodeBuild. "
+        }
+      ]
+    }
+  }
+}

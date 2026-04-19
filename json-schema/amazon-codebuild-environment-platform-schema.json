@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-environment-platform-schema.json",
+  "title": "EnvironmentPlatform",
+  "description": "A set of Docker images that are related by platform and are managed by CodeBuild.",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/PlatformType"
+        },
+        {
+          "description": "The platform's name."
+        }
+      ]
+    },
+    "languages": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EnvironmentLanguages"
+        },
+        {
+          "description": "The list of programming languages that are available for the specified platform."
+        }
+      ]
+    }
+  }
+}

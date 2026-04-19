@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-update-webhook-output-schema.json",
+  "title": "UpdateWebhookOutput",
+  "description": "UpdateWebhookOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "webhook": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Webhook"
+        },
+        {
+          "description": " Information about a repository's webhook that is associated with a project in CodeBuild. "
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "serviceRole": "example-value",
+  "combineArtifacts": "example-value",
+  "restrictions": "example-value",
+  "timeoutInMins": "example-value",
+  "batchReportMode": "example-value"
+}

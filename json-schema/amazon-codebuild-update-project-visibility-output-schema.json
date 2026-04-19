@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-update-project-visibility-output-schema.json",
+  "title": "UpdateProjectVisibilityOutput",
+  "description": "UpdateProjectVisibilityOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "projectArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the build project."
+        }
+      ]
+    },
+    "publicProjectAlias": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "Contains the project identifier used with the public build APIs. "
+        }
+      ]
+    },
+    "projectVisibility": {
+      "$ref": "#/components/schemas/ProjectVisibilityType"
+    }
+  }
+}

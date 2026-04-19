@@ -1,0 +1,6 @@
+{
+  "projectName": "example-resource",
+  "branchFilter": "example-value",
+  "filterGroups": "example-value",
+  "buildType": "STANDARD"
+}

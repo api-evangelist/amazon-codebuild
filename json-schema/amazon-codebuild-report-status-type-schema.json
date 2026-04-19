@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-status-type-schema.json",
+  "title": "ReportStatusType",
+  "description": "ReportStatusType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "GENERATING",
+    "SUCCEEDED",
+    "FAILED",
+    "INCOMPLETE",
+    "DELETING"
+  ]
+}

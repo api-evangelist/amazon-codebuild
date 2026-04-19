@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-cache-mode-schema.json",
+  "title": "CacheMode",
+  "description": "CacheMode schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "LOCAL_DOCKER_LAYER_CACHE",
+    "LOCAL_SOURCE_CACHE",
+    "LOCAL_CUSTOM_CACHE"
+  ]
+}

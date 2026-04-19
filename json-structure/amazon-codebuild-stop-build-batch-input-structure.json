@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-stop-build-batch-input-structure.json",
+  "name": "StopBuildBatchInput",
+  "description": "StopBuildBatchInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The identifier of the batch build to stop."
+        }
+      ]
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

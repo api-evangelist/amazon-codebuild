@@ -1,0 +1,154 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon CodeBuild CI/CD
+  description: Unified workflow for DevOps teams to manage build projects, run builds, monitor build status, and integrate with CI/CD pipelines using Amazon CodeBuild.
+  tags:
+  - Amazon
+  - AWS
+  - CI/CD
+  - Build Automation
+  - DevOps
+  - Continuous Integration
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - import: codebuild
+    location: ./shared/codebuild.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: codebuild-cicd-api
+    description: Unified REST API for CodeBuild CI/CD operations.
+    resources:
+    - path: /v1/projects
+      name: projects
+      description: Manage CodeBuild build projects
+    - path: /v1/builds
+      name: builds
+      description: Start and monitor builds
+    - path: /v1/reports
+      name: reports
+      description: Access build and test reports
+  - type: mcp
+    port: 9090
+    namespace: codebuild-cicd-mcp
+    transport: http
+    description: MCP server for AI-assisted build management.
+    tools:
+    - name: list-projects
+      description: List all CodeBuild projects
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.listProjects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-projects
+      description: Get details about specific CodeBuild projects
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.batchGetProjects
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-project
+      description: Create a new CodeBuild build project
+      hints:
+        readOnly: false
+        openWorld: false
+      call: codebuild.createProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-project
+      description: Update an existing CodeBuild project configuration
+      hints:
+        readOnly: false
+        openWorld: false
+      call: codebuild.updateProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-project
+      description: Delete a CodeBuild project
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: codebuild.deleteProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-build
+      description: Start a new build for a CodeBuild project
+      hints:
+        readOnly: false
+        openWorld: false
+      call: codebuild.startBuild
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-build
+      description: Stop a running CodeBuild build
+      hints:
+        readOnly: false
+        destructive: false
+        openWorld: false
+      call: codebuild.stopBuild
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-builds
+      description: Get details about specific builds
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.batchGetBuilds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-builds
+      description: List all builds or builds for a specific project
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.listBuilds
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-builds-for-project
+      description: List builds for a specific CodeBuild project
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.listBuildsForProject
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-report-groups
+      description: List CodeBuild report groups
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.listReportGroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-reports
+      description: List CodeBuild test and coverage reports
+      hints:
+        readOnly: true
+        openWorld: true
+      call: codebuild.listReports
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-create-report-group-output-structure.json",
+  "name": "CreateReportGroupOutput",
+  "description": "CreateReportGroupOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "reportGroup": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportGroup"
+        },
+        {
+          "description": " Information about the report group that was created. "
+        }
+      ]
+    }
+  }
+}

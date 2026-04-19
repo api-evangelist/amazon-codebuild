@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-source-type-structure.json",
+  "name": "SourceType",
+  "description": "SourceType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "CODECOMMIT",
+    "CODEPIPELINE",
+    "GITHUB",
+    "S3",
+    "BITBUCKET",
+    "GITHUB_ENTERPRISE",
+    "NO_SOURCE"
+  ]
+}

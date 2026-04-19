@@ -1,0 +1,5 @@
+{
+  "projectArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "publicProjectAlias": "example-value",
+  "projectVisibility": "example-value"
+}

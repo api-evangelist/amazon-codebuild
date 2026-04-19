@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-describe-code-coverages-output-schema.json",
+  "title": "DescribeCodeCoveragesOutput",
+  "description": "DescribeCodeCoveragesOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "If there are more items to return, this contains a token that is passed to a subsequent call to <code>DescribeCodeCoverages</code> to retrieve the next set of items."
+        }
+      ]
+    },
+    "codeCoverages": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CodeCoverages"
+        },
+        {
+          "description": "An array of <code>CodeCoverage</code> objects that contain the results."
+        }
+      ]
+    }
+  }
+}

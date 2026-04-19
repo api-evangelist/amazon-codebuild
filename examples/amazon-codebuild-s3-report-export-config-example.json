@@ -1,0 +1,8 @@
+{
+  "bucket": "example-value",
+  "bucketOwner": "123456789012",
+  "path": "example-value",
+  "packaging": "example-value",
+  "encryptionKey": "example-value",
+  "encryptionDisabled": "example-value"
+}

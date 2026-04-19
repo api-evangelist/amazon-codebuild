@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-build-summary-schema.json",
+  "title": "BuildSummary",
+  "description": "Contains summary information about a batch build group.",
+  "type": "object",
+  "properties": {
+    "arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The batch build ARN."
+        }
+      ]
+    },
+    "requestedOn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "When the build was started, expressed in Unix time format."
+        }
+      ]
+    },
+    "buildStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StatusType"
+        },
+        {
+          "description": "<p>The status of the build group.</p> <dl> <dt>FAILED</dt> <dd> <p>The build group failed.</p> </dd> <dt>FAULT</dt> <dd> <p>The build group faulted.</p> </dd> <dt>IN_PROGRESS</dt> <dd> <p>The build group is still in progress.</p> </dd> <dt>STOPPED</dt> <dd> <p>The build group stopped.</p> </dd> <dt>SUCCEEDED</dt> <dd> <p>The build group succeeded.</p> </dd> <dt>TIMED_OUT</dt> <dd> <p>The build group timed out.</p> </dd> </dl>"
+        }
+      ]
+    },
+    "primaryArtifact": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResolvedArtifact"
+        },
+        {
+          "description": "A <code>ResolvedArtifact</code> object that represents the primary build artifacts for the build group."
+        }
+      ]
+    },
+    "secondaryArtifacts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ResolvedSecondaryArtifacts"
+        },
+        {
+          "description": "An array of <code>ResolvedArtifact</code> objects that represents the secondary build artifacts for the build group."
+        }
+      ]
+    }
+  }
+}

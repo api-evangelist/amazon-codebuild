@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-phase-context-structure.json",
+  "name": "PhaseContext",
+  "description": "Additional information about a build phase that has an error. You can use this information for troubleshooting.",
+  "type": "object",
+  "properties": {
+    "statusCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The status code for the context of the build phase."
+        }
+      ]
+    },
+    "message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "An explanation of the build phase's context. This might include a command ID and an exit code."
+        }
+      ]
+    }
+  }
+}

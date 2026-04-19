@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-build-not-deleted-structure.json",
+  "name": "BuildNotDeleted",
+  "description": "Information about a build that could not be successfully deleted.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the build that could not be successfully deleted."
+        }
+      ]
+    },
+    "statusCode": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Additional information about the build that could not be successfully deleted."
+        }
+      ]
+    }
+  }
+}

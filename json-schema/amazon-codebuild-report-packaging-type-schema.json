@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-packaging-type-schema.json",
+  "title": "ReportPackagingType",
+  "description": "ReportPackagingType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "ZIP",
+    "NONE"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-report-group-trend-field-type-structure.json",
+  "name": "ReportGroupTrendFieldType",
+  "description": "ReportGroupTrendFieldType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "PASS_RATE",
+    "DURATION",
+    "TOTAL",
+    "LINE_COVERAGE",
+    "LINES_COVERED",
+    "LINES_MISSED",
+    "BRANCH_COVERAGE",
+    "BRANCHES_COVERED",
+    "BRANCHES_MISSED"
+  ]
+}

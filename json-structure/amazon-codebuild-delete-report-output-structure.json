@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-delete-report-output-structure.json",
+  "name": "DeleteReportOutput",
+  "description": "DeleteReportOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {}
+}

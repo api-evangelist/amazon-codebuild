@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-get-resource-policy-input-schema.json",
+  "title": "GetResourcePolicyInput",
+  "description": "GetResourcePolicyInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "resourceArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " The ARN of the resource that is associated with the resource policy. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "resourceArn"
+  ]
+}

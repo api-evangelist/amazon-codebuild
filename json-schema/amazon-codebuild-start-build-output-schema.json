@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-start-build-output-schema.json",
+  "title": "StartBuildOutput",
+  "description": "StartBuildOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "build": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Build"
+        },
+        {
+          "description": "Information about the build to be run."
+        }
+      ]
+    }
+  }
+}

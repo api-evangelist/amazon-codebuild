@@ -1,0 +1,7 @@
+{
+  "identifier": "500123",
+  "dependsOn": "example-value",
+  "ignoreFailure": "example-value",
+  "currentBuildSummary": "example-value",
+  "priorBuildSummaryList": "example-value"
+}

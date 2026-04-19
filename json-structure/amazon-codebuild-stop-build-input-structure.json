@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-stop-build-input-structure.json",
+  "name": "StopBuildInput",
+  "description": "StopBuildInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the build."
+        }
+      ]
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

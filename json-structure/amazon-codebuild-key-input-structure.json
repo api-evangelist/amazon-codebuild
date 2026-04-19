@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-key-input-structure.json",
+  "name": "KeyInput",
+  "description": "KeyInput schema from Amazon CodeBuild",
+  "type": "string",
+  "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=@+\\-]*)$",
+  "minLength": 1,
+  "maxLength": 127
+}

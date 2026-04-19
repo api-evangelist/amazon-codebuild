@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-delete-webhook-output-structure.json",
+  "name": "DeleteWebhookOutput",
+  "description": "DeleteWebhookOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {}
+}

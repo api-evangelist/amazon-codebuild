@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-project-names-structure.json",
+  "name": "ProjectNames",
+  "description": "ProjectNames schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/NonEmptyString"
+  },
+  "minItems": 1,
+  "maxItems": 100
+}

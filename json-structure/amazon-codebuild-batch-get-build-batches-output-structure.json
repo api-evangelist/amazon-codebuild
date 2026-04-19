@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-batch-get-build-batches-output-structure.json",
+  "name": "BatchGetBuildBatchesOutput",
+  "description": "BatchGetBuildBatchesOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "buildBatches": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildBatches"
+        },
+        {
+          "description": "An array of <code>BuildBatch</code> objects that represent the retrieved batch builds."
+        }
+      ]
+    },
+    "buildBatchesNotFound": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildBatchIds"
+        },
+        {
+          "description": "An array that contains the identifiers of any batch builds that are not found."
+        }
+      ]
+    }
+  }
+}

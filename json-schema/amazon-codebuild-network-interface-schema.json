@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-network-interface-schema.json",
+  "title": "NetworkInterface",
+  "description": "Describes a network interface.",
+  "type": "object",
+  "properties": {
+    "subnetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the subnet."
+        }
+      ]
+    },
+    "networkInterfaceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the network interface."
+        }
+      ]
+    }
+  }
+}

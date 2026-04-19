@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-list-curated-environment-images-output-schema.json",
+  "title": "ListCuratedEnvironmentImagesOutput",
+  "description": "ListCuratedEnvironmentImagesOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "platforms": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/EnvironmentPlatforms"
+        },
+        {
+          "description": "Information about supported platforms for Docker images that are managed by CodeBuild."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-put-resource-policy-output-schema.json",
+  "title": "PutResourcePolicyOutput",
+  "description": "PutResourcePolicyOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "resourceArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " The ARN of the <code>Project</code> or <code>ReportGroup</code> resource that is associated with a resource policy. "
+        }
+      ]
+    }
+  }
+}

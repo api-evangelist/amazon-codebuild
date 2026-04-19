@@ -1,0 +1,10 @@
+{
+  "name": "example-resource",
+  "description": "Example description",
+  "source": "example-value",
+  "secondarySources": "example-value",
+  "sourceVersion": "1.0.0",
+  "secondarySourceVersions": "1.0.0",
+  "artifacts": "example-value",
+  "secondaryArtifacts": "example-value"
+}

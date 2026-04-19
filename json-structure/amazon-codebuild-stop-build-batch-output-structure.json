@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-stop-build-batch-output-structure.json",
+  "name": "StopBuildBatchOutput",
+  "description": "StopBuildBatchOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "buildBatch": {
+      "$ref": "#/components/schemas/BuildBatch"
+    }
+  }
+}

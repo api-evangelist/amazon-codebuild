@@ -1,0 +1,10 @@
+{
+  "arn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "name": "example-resource",
+  "type": "STANDARD",
+  "exportConfig": "example-value",
+  "created": "example-value",
+  "lastModified": "example-value",
+  "tags": "example-value",
+  "status": "ACTIVE"
+}

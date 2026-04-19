@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-cache-type-structure.json",
+  "name": "CacheType",
+  "description": "CacheType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "NO_CACHE",
+    "S3",
+    "LOCAL"
+  ]
+}

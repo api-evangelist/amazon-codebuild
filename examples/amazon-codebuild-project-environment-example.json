@@ -1,0 +1,10 @@
+{
+  "type": "STANDARD",
+  "image": "example-value",
+  "computeType": "STANDARD",
+  "environmentVariables": "example-value",
+  "privilegedMode": "example-value",
+  "certificate": "example-value",
+  "registryCredential": "example-value",
+  "imagePullCredentialsType": "STANDARD"
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-export-config-type-schema.json",
+  "title": "ReportExportConfigType",
+  "description": "ReportExportConfigType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "S3",
+    "NO_EXPORT"
+  ]
+}

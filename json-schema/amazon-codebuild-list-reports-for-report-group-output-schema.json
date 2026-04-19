@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-list-reports-for-report-group-output-schema.json",
+  "title": "ListReportsForReportGroupOutput",
+  "description": "ListReportsForReportGroupOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " During a previous call, the maximum number of items that can be returned is the value specified in <code>maxResults</code>. If there more items in the list, then a unique string called a <i>nextToken</i> is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. "
+        }
+      ]
+    },
+    "reports": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportArns"
+        },
+        {
+          "description": " The list of report ARNs. "
+        }
+      ]
+    }
+  }
+}

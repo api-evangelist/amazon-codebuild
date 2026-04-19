@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-report-export-config-structure.json",
+  "name": "ReportExportConfig",
+  "description": " Information about the location where the run of a report is exported. ",
+  "type": "object",
+  "properties": {
+    "exportConfigType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportExportConfigType"
+        },
+        {
+          "description": "<p> The export configuration type. Valid values are: </p> <ul> <li> <p> <code>S3</code>: The report results are exported to an S3 bucket. </p> </li> <li> <p> <code>NO_EXPORT</code>: The report results are not exported. </p> </li> </ul>"
+        }
+      ]
+    },
+    "s3Destination": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3ReportExportConfig"
+        },
+        {
+          "description": " A <code>S3ReportExportConfig</code> object that contains information about the S3 bucket where the run of a report is exported. "
+        }
+      ]
+    }
+  }
+}

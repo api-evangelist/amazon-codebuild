@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-time-out-schema.json",
+  "title": "TimeOut",
+  "description": "TimeOut schema from Amazon CodeBuild",
+  "type": "integer",
+  "minimum": 5,
+  "maximum": 480
+}

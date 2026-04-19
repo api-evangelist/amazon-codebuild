@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-reports-schema.json",
+  "title": "Reports",
+  "description": "Reports schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/Report"
+  },
+  "minItems": 1,
+  "maxItems": 100
+}

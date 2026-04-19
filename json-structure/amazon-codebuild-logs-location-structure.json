@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-logs-location-structure.json",
+  "name": "LogsLocation",
+  "description": "Information about build logs in CloudWatch Logs.",
+  "type": "object",
+  "properties": {
+    "groupName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the CloudWatch Logs group for the build logs."
+        }
+      ]
+    },
+    "streamName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the CloudWatch Logs stream for the build logs."
+        }
+      ]
+    },
+    "deepLink": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The URL to an individual build log in CloudWatch Logs."
+        }
+      ]
+    },
+    "s3DeepLink": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The URL to a build log in an S3 bucket. "
+        }
+      ]
+    },
+    "cloudWatchLogsArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The ARN of CloudWatch Logs for a build project. Its format is <code>arn:${Partition}:logs:${Region}:${Account}:log-group:${LogGroupName}:log-stream:${LogStreamName}</code>. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatchlogs.html#amazoncloudwatchlogs-resources-for-iam-policies\">Resources Defined by CloudWatch Logs</a>. "
+        }
+      ]
+    },
+    "s3LogsArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " The ARN of S3 logs for a build project. Its format is <code>arn:${Partition}:s3:::${BucketName}/${ObjectName}</code>. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazons3.html#amazons3-resources-for-iam-policies\">Resources Defined by Amazon S3</a>. "
+        }
+      ]
+    },
+    "cloudWatchLogs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CloudWatchLogsConfig"
+        },
+        {
+          "description": " Information about CloudWatch Logs for a build project. "
+        }
+      ]
+    },
+    "s3Logs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3LogsConfig"
+        },
+        {
+          "description": " Information about S3 logs for a build project. "
+        }
+      ]
+    }
+  }
+}

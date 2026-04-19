@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-start-build-request-structure.json",
+  "name": "StartBuildRequest",
+  "description": "StartBuildRequest schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "The name of the CodeBuild build project."
+    },
+    "sourceVersion": {
+      "type": "string",
+      "description": "The version of the build input to be built."
+    },
+    "environmentVariablesOverride": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "projectName"
+  ]
+}

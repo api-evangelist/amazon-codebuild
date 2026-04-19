@@ -1,0 +1,10 @@
+{
+  "type": "STANDARD",
+  "location": "example-value",
+  "gitCloneDepth": "example-value",
+  "gitSubmodulesConfig": "example-value",
+  "buildspec": "example-value",
+  "auth": "example-value",
+  "reportBuildStatus": "ACTIVE",
+  "buildStatusConfig": "ACTIVE"
+}

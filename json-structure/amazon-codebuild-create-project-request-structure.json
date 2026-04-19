@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-create-project-request-structure.json",
+  "name": "CreateProjectRequest",
+  "description": "CreateProjectRequest schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the build project."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the build project."
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "CODECOMMIT",
+            "CODEPIPELINE",
+            "GITHUB",
+            "GITHUB_ENTERPRISE",
+            "BITBUCKET",
+            "S3",
+            "NO_SOURCE"
+          ]
+        },
+        "location": {
+          "type": "string"
+        },
+        "buildspec": {
+          "type": "string"
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "type",
+        "image",
+        "computeType"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "WINDOWS_CONTAINER",
+            "LINUX_CONTAINER",
+            "LINUX_GPU_CONTAINER",
+            "ARM_CONTAINER"
+          ]
+        },
+        "image": {
+          "type": "string"
+        },
+        "computeType": {
+          "type": "string",
+          "enum": [
+            "BUILD_GENERAL1_SMALL",
+            "BUILD_GENERAL1_MEDIUM",
+            "BUILD_GENERAL1_LARGE",
+            "BUILD_GENERAL1_2XLARGE"
+          ]
+        },
+        "environmentVariables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "PLAINTEXT",
+                  "PARAMETER_STORE",
+                  "SECRETS_MANAGER"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "serviceRole": {
+      "type": "string",
+      "description": "The ARN of the IAM role for CodeBuild."
+    },
+    "timeoutInMinutes": {
+      "type": "int32",
+      "description": "Build timeout in minutes."
+    }
+  },
+  "required": [
+    "name",
+    "source",
+    "environment",
+    "serviceRole"
+  ]
+}

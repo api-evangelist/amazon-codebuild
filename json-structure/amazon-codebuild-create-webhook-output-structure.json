@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-create-webhook-output-structure.json",
+  "name": "CreateWebhookOutput",
+  "description": "CreateWebhookOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "webhook": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Webhook"
+        },
+        {
+          "description": "Information about a webhook that connects repository events to a build project in CodeBuild."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "arn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "type": "STANDARD",
+  "name": "example-resource",
+  "reportGroupArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "executionId": "500123",
+  "status": "ACTIVE",
+  "created": "example-value",
+  "expired": "example-value"
+}

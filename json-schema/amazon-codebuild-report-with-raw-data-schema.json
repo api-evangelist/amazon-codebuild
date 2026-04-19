@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-with-raw-data-schema.json",
+  "title": "ReportWithRawData",
+  "description": "Contains the unmodified data for the report. For more information, see .",
+  "type": "object",
+  "properties": {
+    "reportArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ARN of the report."
+        }
+      ]
+    },
+    "data": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The value of the requested data field from the report."
+        }
+      ]
+    }
+  }
+}

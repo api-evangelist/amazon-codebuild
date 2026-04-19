@@ -1,67 +1,141 @@
 {
   "@context": {
     "@version": 1.1,
-    "codebuild": "https://docs.aws.amazon.com/codebuild/latest/APIReference/",
+    "amazon-code-build": "https://amazon-code-build.amazonaws.com/schema/",
     "schema": "https://schema.org/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
-
-    "Project": {
-      "@id": "codebuild:Project",
-      "@context": {
-        "name": "schema:name",
-        "arn": "codebuild:arn",
-        "description": "schema:description",
-        "serviceRole": "codebuild:serviceRole",
-        "timeoutInMinutes": {
-          "@id": "codebuild:timeoutInMinutes",
-          "@type": "xsd:integer"
-        },
-        "created": {
-          "@id": "dcterms:created",
-          "@type": "xsd:dateTime"
-        },
-        "lastModified": {
-          "@id": "dcterms:modified",
-          "@type": "xsd:dateTime"
-        }
-      }
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CreateProjectRequest": "amazon-code-build:CreateProjectRequest",
+    "CreateProjectResponse": "amazon-code-build:CreateProjectResponse",
+    "ListProjectsResponse": "amazon-code-build:ListProjectsResponse",
+    "Project": "amazon-code-build:Project",
+    "StartBuildRequest": "amazon-code-build:StartBuildRequest",
+    "StartBuildResponse": "amazon-code-build:StartBuildResponse",
+    "StopBuildResponse": "amazon-code-build:StopBuildResponse",
+    "BatchGetBuildsResponse": "amazon-code-build:BatchGetBuildsResponse",
+    "Build": "amazon-code-build:Build",
+    "name": "schema:name",
+    "description": "schema:description",
+    "source": {
+      "@id": "amazon-code-build:source",
+      "@type": "xsd:string"
     },
-
-    "Build": {
-      "@id": "codebuild:Build",
-      "@context": {
-        "buildId": "codebuild:buildId",
-        "buildNumber": {
-          "@id": "codebuild:buildNumber",
-          "@type": "xsd:integer"
-        },
-        "buildStatus": "codebuild:buildStatus",
-        "currentPhase": "codebuild:currentPhase",
-        "projectName": "codebuild:projectName",
-        "sourceVersion": "codebuild:sourceVersion",
-        "startTime": {
-          "@id": "codebuild:startTime",
-          "@type": "xsd:dateTime"
-        },
-        "endTime": {
-          "@id": "codebuild:endTime",
-          "@type": "xsd:dateTime"
-        }
-      }
+    "type": {
+      "@id": "amazon-code-build:type",
+      "@type": "xsd:string"
     },
-
-    "BuildEnvironment": {
-      "@id": "codebuild:BuildEnvironment",
-      "@context": {
-        "type": "codebuild:environmentType",
-        "image": "codebuild:image",
-        "computeType": "codebuild:computeType",
-        "privilegedMode": {
-          "@id": "codebuild:privilegedMode",
-          "@type": "xsd:boolean"
-        }
-      }
+    "location": {
+      "@id": "amazon-code-build:location",
+      "@type": "xsd:string"
+    },
+    "buildspec": {
+      "@id": "amazon-code-build:buildspec",
+      "@type": "xsd:string"
+    },
+    "environment": {
+      "@id": "amazon-code-build:environment",
+      "@type": "xsd:string"
+    },
+    "image": {
+      "@id": "amazon-code-build:image",
+      "@type": "xsd:string"
+    },
+    "computeType": {
+      "@id": "amazon-code-build:computeType",
+      "@type": "xsd:string"
+    },
+    "environmentVariables": {
+      "@id": "amazon-code-build:environmentVariables",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "amazon-code-build:value",
+      "@type": "xsd:string"
+    },
+    "serviceRole": {
+      "@id": "amazon-code-build:serviceRole",
+      "@type": "xsd:string"
+    },
+    "timeoutInMinutes": {
+      "@id": "amazon-code-build:timeoutInMinutes",
+      "@type": "xsd:integer"
+    },
+    "project": {
+      "@id": "amazon-code-build:project",
+      "@type": "xsd:string"
+    },
+    "projects": {
+      "@id": "amazon-code-build:projects",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "nextToken": {
+      "@id": "amazon-code-build:nextToken",
+      "@type": "xsd:string"
+    },
+    "arn": {
+      "@id": "amazon-code-build:arn",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "amazon-code-build:created",
+      "@type": "xsd:dateTime"
+    },
+    "lastModified": {
+      "@id": "amazon-code-build:lastModified",
+      "@type": "xsd:dateTime"
+    },
+    "projectName": {
+      "@id": "amazon-code-build:projectName",
+      "@type": "xsd:string"
+    },
+    "sourceVersion": {
+      "@id": "amazon-code-build:sourceVersion",
+      "@type": "xsd:string"
+    },
+    "environmentVariablesOverride": {
+      "@id": "amazon-code-build:environmentVariablesOverride",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "build": {
+      "@id": "amazon-code-build:build",
+      "@type": "xsd:string"
+    },
+    "builds": {
+      "@id": "amazon-code-build:builds",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "buildsNotFound": {
+      "@id": "amazon-code-build:buildsNotFound",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "amazon-code-build:id",
+      "@type": "xsd:string"
+    },
+    "buildNumber": {
+      "@id": "amazon-code-build:buildNumber",
+      "@type": "xsd:integer"
+    },
+    "startTime": {
+      "@id": "amazon-code-build:startTime",
+      "@type": "xsd:dateTime"
+    },
+    "endTime": {
+      "@id": "amazon-code-build:endTime",
+      "@type": "xsd:dateTime"
+    },
+    "currentPhase": {
+      "@id": "amazon-code-build:currentPhase",
+      "@type": "xsd:string"
+    },
+    "buildStatus": {
+      "@id": "amazon-code-build:buildStatus",
+      "@type": "xsd:string"
     }
   }
 }

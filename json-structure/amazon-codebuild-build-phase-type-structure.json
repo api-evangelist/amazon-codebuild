@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-build-phase-type-structure.json",
+  "name": "BuildPhaseType",
+  "description": "BuildPhaseType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "SUBMITTED",
+    "QUEUED",
+    "PROVISIONING",
+    "DOWNLOAD_SOURCE",
+    "INSTALL",
+    "PRE_BUILD",
+    "BUILD",
+    "POST_BUILD",
+    "UPLOAD_ARTIFACTS",
+    "FINALIZING",
+    "COMPLETED"
+  ]
+}

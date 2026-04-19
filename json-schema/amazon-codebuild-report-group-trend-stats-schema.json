@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-group-trend-stats-schema.json",
+  "title": "ReportGroupTrendStats",
+  "description": "Contains trend statistics for a set of reports. The actual values depend on the type of trend being collected. For more information, see .",
+  "type": "object",
+  "properties": {
+    "average": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Contains the average of all values analyzed."
+        }
+      ]
+    },
+    "max": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Contains the maximum value analyzed."
+        }
+      ]
+    },
+    "min": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Contains the minimum value analyzed."
+        }
+      ]
+    }
+  }
+}

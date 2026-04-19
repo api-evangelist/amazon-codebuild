@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-retry-build-batch-input-schema.json",
+  "title": "RetryBuildBatchInput",
+  "description": "RetryBuildBatchInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "Specifies the identifier of the batch build to restart."
+        }
+      ]
+    },
+    "retryType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RetryBuildBatchType"
+        },
+        {
+          "description": "Specifies the type of retry to perform."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-platform-type-structure.json",
+  "name": "PlatformType",
+  "description": "PlatformType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "DEBIAN",
+    "AMAZON_LINUX",
+    "UBUNTU",
+    "WINDOWS_SERVER"
+  ]
+}

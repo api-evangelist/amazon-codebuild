@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-build-batch-filter-schema.json",
+  "title": "BuildBatchFilter",
+  "description": "Specifies filters when retrieving batch builds.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/StatusType"
+        },
+        {
+          "description": "The status of the batch builds to retrieve. Only batch builds that have this status will be retrieved."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-delete-resource-policy-input-structure.json",
+  "name": "DeleteResourcePolicyInput",
+  "description": "DeleteResourcePolicyInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "resourceArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " The ARN of the resource that is associated with the resource policy. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "resourceArn"
+  ]
+}

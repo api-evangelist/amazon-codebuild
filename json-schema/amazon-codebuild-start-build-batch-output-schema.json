@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-start-build-batch-output-schema.json",
+  "title": "StartBuildBatchOutput",
+  "description": "StartBuildBatchOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "buildBatch": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildBatch"
+        },
+        {
+          "description": "A <code>BuildBatch</code> object that contains information about the batch build."
+        }
+      ]
+    }
+  }
+}

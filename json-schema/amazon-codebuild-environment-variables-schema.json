@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-environment-variables-schema.json",
+  "title": "EnvironmentVariables",
+  "description": "EnvironmentVariables schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/EnvironmentVariable"
+  }
+}

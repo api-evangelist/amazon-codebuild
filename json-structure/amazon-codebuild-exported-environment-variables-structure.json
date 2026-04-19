@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-exported-environment-variables-structure.json",
+  "name": "ExportedEnvironmentVariables",
+  "description": "ExportedEnvironmentVariables schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ExportedEnvironmentVariable"
+  }
+}

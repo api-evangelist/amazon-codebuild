@@ -1,0 +1,11 @@
+{
+  "projectName": "example-resource",
+  "sourceVersion": "1.0.0",
+  "environmentVariablesOverride": [
+    {
+      "name": "example-resource",
+      "value": "example-value",
+      "type": "STANDARD"
+    }
+  ]
+}

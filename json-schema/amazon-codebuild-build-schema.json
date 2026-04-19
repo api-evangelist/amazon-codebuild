@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-build-schema.json",
+  "title": "Build",
+  "description": "Build schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "arn": {
+      "type": "string"
+    },
+    "buildNumber": {
+      "type": "integer"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentPhase": {
+      "type": "string"
+    },
+    "buildStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCEEDED",
+        "FAILED",
+        "FAULT",
+        "TIMED_OUT",
+        "IN_PROGRESS",
+        "STOPPED"
+      ]
+    },
+    "projectName": {
+      "type": "string"
+    },
+    "sourceVersion": {
+      "type": "string"
+    }
+  }
+}

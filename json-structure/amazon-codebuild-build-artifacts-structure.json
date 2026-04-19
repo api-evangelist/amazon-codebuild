@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-build-artifacts-structure.json",
+  "name": "BuildArtifacts",
+  "description": "Information about build output artifacts.",
+  "type": "object",
+  "properties": {
+    "location": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "Information about the location of the build artifacts."
+        }
+      ]
+    },
+    "sha256sum": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p>The SHA-256 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>"
+        }
+      ]
+    },
+    "md5sum": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p>The MD5 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>"
+        }
+      ]
+    },
+    "overrideArtifactName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperBoolean"
+        },
+        {
+          "description": " If this flag is set, a name specified in the buildspec file overrides the artifact name. The name specified in a buildspec file is calculated at build time and uses the Shell Command Language. For example, you can append a date and time to your artifact name so that it is always unique. "
+        }
+      ]
+    },
+    "encryptionDisabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperBoolean"
+        },
+        {
+          "description": " Information that tells you if encryption for build artifacts is disabled. "
+        }
+      ]
+    },
+    "artifactIdentifier": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": " An identifier for this artifact definition. "
+        }
+      ]
+    },
+    "bucketOwnerAccess": {
+      "$ref": "#/components/schemas/BucketOwnerAccess"
+    }
+  }
+}

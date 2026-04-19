@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-git-submodules-config-schema.json",
+  "title": "GitSubmodulesConfig",
+  "description": " Information about the Git submodules configuration for an CodeBuild build project. ",
+  "type": "object",
+  "properties": {
+    "fetchSubmodules": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperBoolean"
+        },
+        {
+          "description": " Set to true to fetch Git submodules for your CodeBuild build project. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "fetchSubmodules"
+  ]
+}

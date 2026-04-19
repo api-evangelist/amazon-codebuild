@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-batch-get-reports-input-schema.json",
+  "title": "BatchGetReportsInput",
+  "description": "BatchGetReportsInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "reportArns": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ReportArns"
+        },
+        {
+          "description": " An array of ARNs that identify the <code>Report</code> objects to return. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "reportArns"
+  ]
+}

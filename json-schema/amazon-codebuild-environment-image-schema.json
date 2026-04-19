@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-environment-image-schema.json",
+  "title": "EnvironmentImage",
+  "description": "Information about a Docker image that is managed by CodeBuild.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The name of the Docker image."
+        }
+      ]
+    },
+    "description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "The description of the Docker image."
+        }
+      ]
+    },
+    "versions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageVersions"
+        },
+        {
+          "description": "A list of environment image versions."
+        }
+      ]
+    }
+  }
+}

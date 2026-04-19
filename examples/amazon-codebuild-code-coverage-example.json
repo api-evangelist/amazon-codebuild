@@ -1,0 +1,10 @@
+{
+  "id": "500123",
+  "reportARN": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "filePath": "example-value",
+  "lineCoveragePercentage": "example-value",
+  "linesCovered": "example-value",
+  "linesMissed": "example-value",
+  "branchCoveragePercentage": "example-value",
+  "branchesCovered": "example-value"
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-delete-webhook-input-schema.json",
+  "title": "DeleteWebhookInput",
+  "description": "DeleteWebhookInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectName"
+        },
+        {
+          "description": "The name of the CodeBuild project."
+        }
+      ]
+    }
+  },
+  "required": [
+    "projectName"
+  ]
+}

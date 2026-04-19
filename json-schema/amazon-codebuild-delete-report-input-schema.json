@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-delete-report-input-schema.json",
+  "title": "DeleteReportInput",
+  "description": "DeleteReportInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " The ARN of the report to delete. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "arn"
+  ]
+}

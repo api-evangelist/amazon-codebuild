@@ -1,0 +1,9 @@
+{
+  "reportArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "nextToken": "example-value",
+  "maxResults": "example-value",
+  "sortOrder": "example-value",
+  "sortBy": "example-value",
+  "minLineCoveragePercentage": "example-value",
+  "maxLineCoveragePercentage": "example-value"
+}

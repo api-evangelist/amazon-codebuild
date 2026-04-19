@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-environment-type-schema.json",
+  "title": "EnvironmentType",
+  "description": "EnvironmentType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "WINDOWS_CONTAINER",
+    "LINUX_CONTAINER",
+    "LINUX_GPU_CONTAINER",
+    "ARM_CONTAINER",
+    "WINDOWS_SERVER_2019_CONTAINER"
+  ]
+}

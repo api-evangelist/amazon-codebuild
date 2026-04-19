@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-status-type-structure.json",
+  "name": "StatusType",
+  "description": "StatusType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "SUCCEEDED",
+    "FAILED",
+    "FAULT",
+    "TIMED_OUT",
+    "IN_PROGRESS",
+    "STOPPED"
+  ]
+}

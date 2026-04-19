@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-report-group-status-type-structure.json",
+  "name": "ReportGroupStatusType",
+  "description": "ReportGroupStatusType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "ACTIVE",
+    "DELETING"
+  ]
+}

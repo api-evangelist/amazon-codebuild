@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-artifact-packaging-structure.json",
+  "name": "ArtifactPackaging",
+  "description": "ArtifactPackaging schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "NONE",
+    "ZIP"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-wrapper-boolean-structure.json",
+  "name": "WrapperBoolean",
+  "description": "WrapperBoolean schema from Amazon CodeBuild",
+  "type": "boolean"
+}

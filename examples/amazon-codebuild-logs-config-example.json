@@ -1,0 +1,4 @@
+{
+  "cloudWatchLogs": "example-value",
+  "s3Logs": "example-value"
+}

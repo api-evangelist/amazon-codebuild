@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-batch-report-mode-type-schema.json",
+  "title": "BatchReportModeType",
+  "description": "BatchReportModeType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "REPORT_INDIVIDUAL_BUILDS",
+    "REPORT_AGGREGATED_BATCH"
+  ]
+}

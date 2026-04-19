@@ -1,0 +1,19 @@
+{
+  "name": "example-resource",
+  "description": "Example description",
+  "source": {
+    "type": "CODECOMMIT",
+    "location": "example-value",
+    "buildspec": "example-value"
+  },
+  "environment": {
+    "type": "WINDOWS_CONTAINER",
+    "image": "example-value",
+    "computeType": "BUILD_GENERAL1_SMALL",
+    "environmentVariables": [
+      {}
+    ]
+  },
+  "serviceRole": "example-value",
+  "timeoutInMinutes": 1718153645993
+}

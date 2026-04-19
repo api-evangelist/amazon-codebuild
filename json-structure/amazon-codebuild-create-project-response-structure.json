@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-create-project-response-structure.json",
+  "name": "CreateProjectResponse",
+  "description": "CreateProjectResponse schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "project": {
+      "$ref": "#/components/schemas/Project"
+    }
+  }
+}

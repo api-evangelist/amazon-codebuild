@@ -1,0 +1,6 @@
+{
+  "name": "example-resource",
+  "type": "STANDARD",
+  "exportConfig": "example-value",
+  "tags": "example-value"
+}

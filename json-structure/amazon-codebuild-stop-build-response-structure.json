@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-stop-build-response-structure.json",
+  "name": "StopBuildResponse",
+  "description": "StopBuildResponse schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "build": {
+      "$ref": "#/components/schemas/Build"
+    }
+  }
+}

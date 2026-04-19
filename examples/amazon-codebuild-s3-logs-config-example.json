@@ -1,0 +1,6 @@
+{
+  "status": "ACTIVE",
+  "location": "example-value",
+  "encryptionDisabled": "example-value",
+  "bucketOwnerAccess": "123456789012"
+}

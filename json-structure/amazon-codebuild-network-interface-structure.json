@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-network-interface-structure.json",
+  "name": "NetworkInterface",
+  "description": "Describes a network interface.",
+  "type": "object",
+  "properties": {
+    "subnetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the subnet."
+        }
+      ]
+    },
+    "networkInterfaceId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the network interface."
+        }
+      ]
+    }
+  }
+}

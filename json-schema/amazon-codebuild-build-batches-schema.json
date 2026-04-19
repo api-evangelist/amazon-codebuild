@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-build-batches-schema.json",
+  "title": "BuildBatches",
+  "description": "BuildBatches schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/BuildBatch"
+  },
+  "minItems": 0,
+  "maxItems": 100
+}

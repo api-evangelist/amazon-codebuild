@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-logs-config-structure.json",
+  "name": "LogsConfig",
+  "description": " Information about logs for a build project. These can be logs in CloudWatch Logs, built in a specified S3 bucket, or both. ",
+  "type": "object",
+  "properties": {
+    "cloudWatchLogs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CloudWatchLogsConfig"
+        },
+        {
+          "description": " Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. "
+        }
+      ]
+    },
+    "s3Logs": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3LogsConfig"
+        },
+        {
+          "description": " Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. "
+        }
+      ]
+    }
+  }
+}

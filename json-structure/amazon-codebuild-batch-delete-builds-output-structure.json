@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-batch-delete-builds-output-structure.json",
+  "name": "BatchDeleteBuildsOutput",
+  "description": "BatchDeleteBuildsOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "buildsDeleted": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildIds"
+        },
+        {
+          "description": "The IDs of the builds that were successfully deleted."
+        }
+      ]
+    },
+    "buildsNotDeleted": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildsNotDeleted"
+        },
+        {
+          "description": "Information about any builds that could not be successfully deleted."
+        }
+      ]
+    }
+  }
+}

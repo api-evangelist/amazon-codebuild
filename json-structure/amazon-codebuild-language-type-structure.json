@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-language-type-structure.json",
+  "name": "LanguageType",
+  "description": "LanguageType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "JAVA",
+    "PYTHON",
+    "NODE_JS",
+    "RUBY",
+    "GOLANG",
+    "DOCKER",
+    "ANDROID",
+    "DOTNET",
+    "BASE",
+    "PHP"
+  ]
+}

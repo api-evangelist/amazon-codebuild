@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-retry-build-input-structure.json",
+  "name": "RetryBuildInput",
+  "description": "RetryBuildInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "Specifies the identifier of the build to restart."
+        }
+      ]
+    }
+  }
+}

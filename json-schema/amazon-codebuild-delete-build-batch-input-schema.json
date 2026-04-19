@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-delete-build-batch-input-schema.json",
+  "title": "DeleteBuildBatchInput",
+  "description": "DeleteBuildBatchInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "id": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The identifier of the batch build to delete."
+        }
+      ]
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-artifacts-type-structure.json",
+  "name": "ArtifactsType",
+  "description": "ArtifactsType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "CODEPIPELINE",
+    "S3",
+    "NO_ARTIFACTS"
+  ]
+}

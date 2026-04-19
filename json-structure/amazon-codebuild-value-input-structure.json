@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-value-input-structure.json",
+  "name": "ValueInput",
+  "description": "ValueInput schema from Amazon CodeBuild",
+  "type": "string",
+  "pattern": "^([\\p{L}\\p{Z}\\p{N}_.:/=@+\\-]*)$",
+  "minLength": 0,
+  "maxLength": 255
+}

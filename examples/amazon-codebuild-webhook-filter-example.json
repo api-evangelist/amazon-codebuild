@@ -1,0 +1,5 @@
+{
+  "type": "STANDARD",
+  "pattern": "example-value",
+  "excludeMatchedPattern": "example-value"
+}

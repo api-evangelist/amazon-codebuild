@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-batch-get-builds-output-schema.json",
+  "title": "BatchGetBuildsOutput",
+  "description": "BatchGetBuildsOutput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "builds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Builds"
+        },
+        {
+          "description": "Information about the requested builds."
+        }
+      ]
+    },
+    "buildsNotFound": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildIds"
+        },
+        {
+          "description": "The IDs of builds for which information could not be found."
+        }
+      ]
+    }
+  }
+}

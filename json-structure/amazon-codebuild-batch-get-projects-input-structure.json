@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-batch-get-projects-input-structure.json",
+  "name": "BatchGetProjectsInput",
+  "description": "BatchGetProjectsInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "names": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectNames"
+        },
+        {
+          "description": "The names or ARNs of the build projects. To get information about a project shared with your Amazon Web Services account, its ARN must be specified. You cannot specify a shared project using its name."
+        }
+      ]
+    }
+  },
+  "required": [
+    "names"
+  ]
+}

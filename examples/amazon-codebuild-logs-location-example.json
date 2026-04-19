@@ -1,0 +1,10 @@
+{
+  "groupName": "example-resource",
+  "streamName": "example-resource",
+  "deepLink": "example-value",
+  "s3DeepLink": "example-value",
+  "cloudWatchLogsArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "s3LogsArn": "arn:aws:service:us-east-1:123456789012:resource/example",
+  "cloudWatchLogs": "example-value",
+  "s3Logs": "example-value"
+}

@@ -1,0 +1,9 @@
+{
+  "url": "https://example.amazonaws.com",
+  "payloadUrl": "https://example.amazonaws.com",
+  "secret": "example-value",
+  "branchFilter": "example-value",
+  "filterGroups": "example-value",
+  "buildType": "STANDARD",
+  "lastModifiedSecret": "example-value"
+}

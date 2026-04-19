@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-webhook-schema.json",
+  "title": "Webhook",
+  "description": "Information about a webhook that connects repository events to a build project in CodeBuild.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The URL to the webhook."
+        }
+      ]
+    },
+    "payloadUrl": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The CodeBuild endpoint where webhook events are sent."
+        }
+      ]
+    },
+    "secret": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "<p>The secret token of the associated repository. </p> <note> <p>A Bitbucket webhook does not support <code>secret</code>. </p> </note>"
+        }
+      ]
+    },
+    "branchFilter": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p>A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then all branches are built.</p> <note> <p>It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>. </p> </note>"
+        }
+      ]
+    },
+    "filterGroups": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/FilterGroups"
+        },
+        {
+          "description": "<p>An array of arrays of <code>WebhookFilter</code> objects used to determine which webhooks are triggered. At least one <code>WebhookFilter</code> in the array must specify <code>EVENT</code> as its <code>type</code>. </p> <p>For a build to be triggered, at least one filter group in the <code>filterGroups</code> array must pass. For a filter group to pass, each of its filters must pass. </p>"
+        }
+      ]
+    },
+    "buildType": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WebhookBuildType"
+        },
+        {
+          "description": "Specifies the type of build this webhook will trigger."
+        }
+      ]
+    },
+    "lastModifiedSecret": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Timestamp"
+        },
+        {
+          "description": "A timestamp that indicates the last time a repository's secret token was modified. "
+        }
+      ]
+    }
+  }
+}

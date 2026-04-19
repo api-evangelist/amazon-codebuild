@@ -1,0 +1,9 @@
+{
+  "location": "example-value",
+  "sha256sum": "example-value",
+  "md5sum": "example-value",
+  "overrideArtifactName": "500123",
+  "encryptionDisabled": "example-value",
+  "artifactIdentifier": "500123",
+  "bucketOwnerAccess": "123456789012"
+}

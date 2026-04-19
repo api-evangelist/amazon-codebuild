@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-report-status-counts-schema.json",
+  "title": "ReportStatusCounts",
+  "description": "ReportStatusCounts schema from Amazon CodeBuild",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/WrapperInt"
+  }
+}

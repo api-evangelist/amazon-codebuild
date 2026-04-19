@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-update-project-visibility-input-schema.json",
+  "title": "UpdateProjectVisibilityInput",
+  "description": "UpdateProjectVisibilityInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "projectArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the build project."
+        }
+      ]
+    },
+    "projectVisibility": {
+      "$ref": "#/components/schemas/ProjectVisibilityType"
+    },
+    "resourceAccessRole": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ARN of the IAM role that enables CodeBuild to access the CloudWatch Logs and Amazon S3 artifacts for the project's builds."
+        }
+      ]
+    }
+  },
+  "required": [
+    "projectArn",
+    "projectVisibility"
+  ]
+}

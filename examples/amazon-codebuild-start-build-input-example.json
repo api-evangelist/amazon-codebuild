@@ -1,0 +1,10 @@
+{
+  "projectName": "example-resource",
+  "secondarySourcesOverride": "500123",
+  "secondarySourcesVersionOverride": "500123",
+  "sourceVersion": "1.0.0",
+  "artifactsOverride": "500123",
+  "secondaryArtifactsOverride": "500123",
+  "environmentVariablesOverride": "500123",
+  "sourceTypeOverride": "500123"
+}

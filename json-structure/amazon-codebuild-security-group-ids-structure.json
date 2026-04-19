@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-security-group-ids-structure.json",
+  "name": "SecurityGroupIds",
+  "description": "SecurityGroupIds schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/NonEmptyString"
+  },
+  "maxItems": 5
+}

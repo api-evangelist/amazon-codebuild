@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-vpc-config-schema.json",
+  "title": "VpcConfig",
+  "description": "Information about the VPC configuration that CodeBuild accesses.",
+  "type": "object",
+  "properties": {
+    "vpcId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ID of the Amazon VPC."
+        }
+      ]
+    },
+    "subnets": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Subnets"
+        },
+        {
+          "description": "A list of one or more subnet IDs in your Amazon VPC."
+        }
+      ]
+    },
+    "securityGroupIds": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SecurityGroupIds"
+        },
+        {
+          "description": "A list of one or more security groups IDs in your Amazon VPC."
+        }
+      ]
+    }
+  }
+}

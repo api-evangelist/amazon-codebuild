@@ -1,0 +1,5 @@
+{
+  "vpcId": "500123",
+  "subnets": "example-value",
+  "securityGroupIds": "500123"
+}

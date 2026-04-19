@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-file-system-type-structure.json",
+  "name": "FileSystemType",
+  "description": "FileSystemType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "EFS"
+  ]
+}

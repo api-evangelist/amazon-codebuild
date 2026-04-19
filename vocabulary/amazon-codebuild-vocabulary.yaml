@@ -1,0 +1,227 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon CodeBuild
+  description: Complete taxonomy of Amazon CodeBuild APIs covering build automation, project management, and CI/CD workflow capabilities.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon CodeBuild API
+    namespace: codebuild
+    version: '2016-10-06'
+    baseUrl: http://codebuild.us-east-1.amazonaws.com
+    status: active
+  resources:
+  - name: ''
+    apis:
+    - Amazon CodeBuild API
+    actions: &id001
+    - BatchDeleteBuilds
+    - BatchGetBuildBatches
+    - BatchGetBuilds
+    - BatchGetProjects
+    - BatchGetReportGroups
+    - BatchGetReports
+    - CreateProject
+    - CreateReportGroup
+    - CreateWebhook
+    - DeleteBuildBatch
+    - DeleteProject
+    - DeleteReport
+    - DeleteReportGroup
+    - DeleteResourcePolicy
+    - DeleteSourceCredentials
+    - DeleteWebhook
+    - DescribeCodeCoverages
+    - DescribeTestCases
+    - GetReportGroupTrend
+    - GetResourcePolicy
+    - ImportSourceCredentials
+    - InvalidateProjectCache
+    - ListBuildBatches
+    - ListBuildBatchesForProject
+    - ListBuilds
+    - ListBuildsForProject
+    - ListCuratedEnvironmentImages
+    - ListProjects
+    - ListReportGroups
+    - ListReports
+    - ListReportsForReportGroup
+    - ListSharedProjects
+    - ListSharedReportGroups
+    - ListSourceCredentials
+    - PutResourcePolicy
+    - RetryBuild
+    - RetryBuildBatch
+    - StartBuild
+    - StartBuildBatch
+    - StopBuild
+    - StopBuildBatch
+    - UpdateProject
+    - UpdateProjectVisibility
+    - UpdateReportGroup
+    - UpdateWebhook
+  actions:
+  - name: batch
+    httpMethods:
+    - POST
+    pattern: write
+    operations:
+    - BatchDeleteBuilds
+    - BatchGetBuildBatches
+    - BatchGetBuilds
+    - BatchGetProjects
+    - BatchGetReportGroups
+    - BatchGetReports
+    - DeleteBuildBatch
+    - ListBuildBatches
+    - ListBuildBatchesForProject
+    - RetryBuildBatch
+  - name: create
+    httpMethods:
+    - POST
+    pattern: write
+    operations:
+    - CreateProject
+    - CreateReportGroup
+    - CreateWebhook
+  - name: post
+    httpMethods:
+    - POST
+    pattern: write
+    operations:
+    - DeleteProject
+    - DeleteReport
+    - DeleteReportGroup
+    - DeleteResourcePolicy
+    - DeleteSourceCredentials
+    - DeleteWebhook
+    - DescribeCodeCoverages
+    - DescribeTestCases
+    - GetReportGroupTrend
+    - GetResourcePolicy
+    - ImportSourceCredentials
+    - InvalidateProjectCache
+    - ListBuilds
+    - ListBuildsForProject
+    - ListCuratedEnvironmentImages
+    - ListProjects
+    - ListReportGroups
+    - ListReports
+    - ListReportsForReportGroup
+    - ListSharedProjects
+    - ListSharedReportGroups
+    - ListSourceCredentials
+    - PutResourcePolicy
+    - RetryBuild
+  - name: start
+    httpMethods:
+    - POST
+    pattern: write
+    operations:
+    - StartBuild
+    - StartBuildBatch
+  - name: stop
+    httpMethods:
+    - POST
+    pattern: write
+    operations:
+    - StopBuild
+    - StopBuildBatch
+  - name: update
+    httpMethods:
+    - POST
+    pattern: write
+    operations:
+    - UpdateProject
+    - UpdateProjectVisibility
+    - UpdateReportGroup
+    - UpdateWebhook
+  schemas:
+    core: []
+  parameters:
+    identifiers:
+    - projectName
+    - id
+    - arn
+    pagination:
+    - nextToken
+    filters:
+    - sortBy
+    - sortOrder
+  enums:
+    buildStatus:
+    - SUCCEEDED
+    - FAILED
+    - FAULT
+    - TIMED_OUT
+    - IN_PROGRESS
+    - STOPPED
+    environmentTypes:
+    - LINUX_CONTAINER
+    - LINUX_GPU_CONTAINER
+    - ARM_CONTAINER
+    - WINDOWS_CONTAINER
+    sourceTypes:
+    - CODECOMMIT
+    - CODEPIPELINE
+    - GITHUB
+    - GITLAB
+    - BITBUCKET
+    - S3
+    - NO_SOURCE
+  authentication:
+    schemes:
+    - AWS Signature Version 4
+    iamIntegration: true
+capability:
+  workflows:
+  - name: CI/CD
+    file: capabilities/amazon-codebuild-cicd.yaml
+    description: Build project management and build execution workflows.
+    apisComined:
+    - Amazon CodeBuild API
+    toolCount: 12
+    personas:
+    - DevOps Engineer
+    - Developer
+    domains:
+    - CI/CD
+    - Build Automation
+  personas:
+  - id: devops-engineer
+    name: DevOps Engineer
+    description: Manages build infrastructure and pipelines.
+    workflows:
+    - CI/CD
+  - id: developer
+    name: Developer
+    description: Runs and monitors builds for their projects.
+    workflows:
+    - CI/CD
+  domains:
+  - name: CI/CD
+    description: Continuous integration and delivery pipeline management.
+  - name: Build Automation
+    description: Automated compilation, testing, and artifact production.
+  namespaces:
+  - type: consumed
+    name: codebuild
+    port:
+  - type: rest
+    name: codebuild-cicd-api
+    port: 8080
+  - type: mcp
+    name: codebuild-cicd-mcp
+    port: 9090
+  binds:
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+  - AWS_REGION
+crossReference:
+- resource: ''
+  operations: *id001
+  workflows:
+  - CI/CD
+  personas:
+  - DevOps Engineer

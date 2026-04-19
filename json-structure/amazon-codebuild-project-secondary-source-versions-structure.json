@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-project-secondary-source-versions-structure.json",
+  "name": "ProjectSecondarySourceVersions",
+  "description": "ProjectSecondarySourceVersions schema from Amazon CodeBuild",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/ProjectSourceVersion"
+  },
+  "minItems": 0,
+  "maxItems": 12
+}

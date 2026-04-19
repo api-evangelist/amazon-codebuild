@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-artifact-namespace-structure.json",
+  "name": "ArtifactNamespace",
+  "description": "ArtifactNamespace schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "NONE",
+    "BUILD_ID"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-delete-report-input-structure.json",
+  "name": "DeleteReportInput",
+  "description": "DeleteReportInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "arn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": " The ARN of the report to delete. "
+        }
+      ]
+    }
+  },
+  "required": [
+    "arn"
+  ]
+}

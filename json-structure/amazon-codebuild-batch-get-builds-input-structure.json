@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-batch-get-builds-input-structure.json",
+  "name": "BatchGetBuildsInput",
+  "description": "BatchGetBuildsInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "ids": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/BuildIds"
+        },
+        {
+          "description": "The IDs of the builds."
+        }
+      ]
+    }
+  },
+  "required": [
+    "ids"
+  ]
+}

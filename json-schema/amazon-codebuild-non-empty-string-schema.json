@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-non-empty-string-schema.json",
+  "title": "NonEmptyString",
+  "description": "NonEmptyString schema from Amazon CodeBuild",
+  "type": "string",
+  "minLength": 1
+}

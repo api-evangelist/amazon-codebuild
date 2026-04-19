@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-structure/amazon-codebuild-environment-type-structure.json",
+  "name": "EnvironmentType",
+  "description": "EnvironmentType schema from Amazon CodeBuild",
+  "type": "string",
+  "enum": [
+    "WINDOWS_CONTAINER",
+    "LINUX_CONTAINER",
+    "LINUX_GPU_CONTAINER",
+    "ARM_CONTAINER",
+    "WINDOWS_SERVER_2019_CONTAINER"
+  ]
+}

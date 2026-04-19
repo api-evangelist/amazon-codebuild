@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-codebuild/refs/heads/main/json-schema/amazon-codebuild-create-project-input-schema.json",
+  "title": "CreateProjectInput",
+  "description": "CreateProjectInput schema from Amazon CodeBuild",
+  "type": "object",
+  "properties": {
+    "name": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectName"
+        },
+        {
+          "description": "The name of the build project."
+        }
+      ]
+    },
+    "description": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectDescription"
+        },
+        {
+          "description": "A description that makes the build project easy to identify."
+        }
+      ]
+    },
+    "source": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectSource"
+        },
+        {
+          "description": "Information about the build input source code for the build project."
+        }
+      ]
+    },
+    "secondarySources": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectSources"
+        },
+        {
+          "description": "An array of <code>ProjectSource</code> objects. "
+        }
+      ]
+    },
+    "sourceVersion": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/String"
+        },
+        {
+          "description": "<p>A version of the build input to be built for this project. If not specified, the latest version is used. If specified, it must be one of: </p> <ul> <li> <p>For CodeCommit: the commit ID, branch, or Git tag to use.</p> </li> <li> <p>For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format <code>pr/pull-request-ID</code> (for example <code>pr/25</code>). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.</p> </li> <li> <p>For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.</p> </li> <li> <p>For Amazon S3: the version ID of the object that represents the build input ZIP file to use.</p> </li> </ul> <p>If <code>sourceVersion</code> is specified at the build level, then that version takes precedence over this <code>sourceVersion</code> (at the project level). </p> <p>For more information, see <a href=\"https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html\">Source Version Sample with CodeBuild</a> in the <i>CodeBuild User Guide</i>. </p>"
+        }
+      ]
+    },
+    "secondarySourceVersions": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectSecondarySourceVersions"
+        },
+        {
+          "description": "An array of <code>ProjectSourceVersion</code> objects. If <code>secondarySourceVersions</code> is specified at the build level, then they take precedence over these <code>secondarySourceVersions</code> (at the project level). "
+        }
+      ]
+    },
+    "artifacts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectArtifacts"
+        },
+        {
+          "description": "Information about the build output artifacts for the build project."
+        }
+      ]
+    },
+    "secondaryArtifacts": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectArtifactsList"
+        },
+        {
+          "description": "An array of <code>ProjectArtifacts</code> objects. "
+        }
+      ]
+    },
+    "cache": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectCache"
+        },
+        {
+          "description": "Stores recently used information so that it can be quickly accessed at a later time."
+        }
+      ]
+    },
+    "environment": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectEnvironment"
+        },
+        {
+          "description": "Information about the build environment for the build project."
+        }
+      ]
+    },
+    "serviceRole": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "The ARN of the IAM role that enables CodeBuild to interact with dependent Amazon Web Services services on behalf of the Amazon Web Services account."
+        }
+      ]
+    },
+    "timeoutInMinutes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TimeOut"
+        },
+        {
+          "description": "How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait before it times out any build that has not been marked as completed. The default is 60 minutes."
+        }
+      ]
+    },
+    "queuedTimeoutInMinutes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TimeOut"
+        },
+        {
+          "description": "The number of minutes a build is allowed to be queued before it times out. "
+        }
+      ]
+    },
+    "encryptionKey": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NonEmptyString"
+        },
+        {
+          "description": "<p>The Key Management Service customer master key (CMK) to be used for encrypting the build output artifacts.</p> <note> <p>You can use a cross-account KMS key to encrypt the build output artifacts if your service role has permission to that key. </p> </note> <p>You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the format <code>alias/&lt;alias-name&gt;</code>). </p>"
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagList"
+        },
+        {
+          "description": "<p>A list of tag key and value pairs associated with this build project.</p> <p>These tags are available for use by Amazon Web Services services that support CodeBuild build project tags.</p>"
+        }
+      ]
+    },
+    "vpcConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/VpcConfig"
+        },
+        {
+          "description": "VpcConfig enables CodeBuild to access resources in an Amazon VPC."
+        }
+      ]
+    },
+    "badgeEnabled": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperBoolean"
+        },
+        {
+          "description": "Set this to true to generate a publicly accessible URL for your project's build badge."
+        }
+      ]
+    },
+    "logsConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/LogsConfig"
+        },
+        {
+          "description": "Information about logs for the build project. These can be logs in CloudWatch Logs, logs uploaded to a specified S3 bucket, or both. "
+        }
+      ]
+    },
+    "fileSystemLocations": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectFileSystemLocations"
+        },
+        {
+          "description": " An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>, <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon Elastic File System. "
+        }
+      ]
+    },
+    "buildBatchConfig": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ProjectBuildBatchConfig"
+        },
+        {
+          "description": "A <a>ProjectBuildBatchConfig</a> object that defines the batch build options for the project."
+        }
+      ]
+    },
+    "concurrentBuildLimit": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/WrapperInt"
+        },
+        {
+          "description": "<p>The maximum number of concurrent builds that are allowed for this project.</p> <p>New builds are only started if the current number of builds is less than or equal to this limit. If the current build count meets this limit, new builds are throttled and are not run.</p>"
+        }
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "source",
+    "artifacts",
+    "environment",
+    "serviceRole"
+  ]
+}
