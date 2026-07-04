@@ -1,0 +1,6 @@
+{
+  "repo": "amazon-codebuild",
+  "feeds": [ { "source": "https://aws.amazon.com/blogs/devops/tag/aws-codebuild/feed/", "feed_url": "https://aws.amazon.com/blogs/devops/tag/aws-codebuild/feed/", "title": "AWS CodeBuild – AWS DevOps & Developer Productivity Blog", "saved": 20 } ],
+  "fetched": "2026-07-04T13:39:37Z",
+  "post_count": 20
+}

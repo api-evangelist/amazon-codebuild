@@ -1,0 +1,32 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/amazon-codebuild-openapi.yml
+note: >-
+  No official first-party AWS CodeBuild MCP server was found (AWS Labs publishes
+  general-purpose servers such as the AWS API MCP server, but no CodeBuild-specific
+  hosted/remote server exists as of this round; only unaffiliated community repos).
+  The tools below are candidates derived one-per-operation from the curated
+  OpenAPI, for a future MCP surface over the CodeBuild API.
+server:
+  name: amazon-codebuild
+  transport: stdio
+tools:
+  - name: create_project
+    description: Create a build project.
+    source_operation: openapi/amazon-codebuild-openapi.yml#CreateProject
+  - name: list_projects
+    description: Get a list of build project names.
+    source_operation: openapi/amazon-codebuild-openapi.yml#ListProjects
+  - name: delete_project
+    description: Delete a build project.
+    source_operation: openapi/amazon-codebuild-openapi.yml#DeleteProject
+  - name: start_build
+    description: Start running a build with the settings defined in the project.
+    source_operation: openapi/amazon-codebuild-openapi.yml#StartBuild
+  - name: stop_build
+    description: Attempt to stop running a build.
+    source_operation: openapi/amazon-codebuild-openapi.yml#StopBuild
+  - name: batch_get_builds
+    description: Get information about one or more builds.
+    source_operation: openapi/amazon-codebuild-openapi.yml#BatchGetBuilds

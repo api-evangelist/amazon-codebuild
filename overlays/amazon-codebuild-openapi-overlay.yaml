@@ -1,0 +1,29 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon CodeBuild API
+  version: 1.0.0
+extends: openapi/amazon-codebuild-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-slug: amazon-codebuild
+      x-apievangelist-provider: Amazon Web Services
+      x-apievangelist-category: CI/CD
+      x-apievangelist-auth: aws-sigv4
+  - target: $.tags
+    update:
+      - name: Reports
+        description: Operations for creating and managing test report groups.
+      - name: Builds
+        description: Operations for starting, stopping, and viewing builds.
+      - name: Projects
+        description: Operations for creating and managing build projects.
+  - target: $.paths['/builds/start'].post
+    update:
+      x-apievangelist-idempotent: false
+  - target: $.paths['/projects'].get
+    update:
+      x-apievangelist-pagination:
+        style: cursor
+        request_param: nextToken
+        response_field: nextToken

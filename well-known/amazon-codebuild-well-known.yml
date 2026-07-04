@@ -1,0 +1,25 @@
+generated: '2026-06-20'
+method: searched
+source: probed /.well-known/ discovery surface on each base host
+hosts:
+  - host: https://codebuild.us-east-1.amazonaws.com
+    note: >-
+      Regional CodeBuild API endpoint (AWS JSON 1.1 protocol, SigV4 auth). No
+      /.well-known/ discovery documents are published on the service endpoint.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://aws.amazon.com
+    note: AWS corporate host; publishes an RFC 9116 security.txt.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: amazon-codebuild-security.txt

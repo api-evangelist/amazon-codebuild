@@ -1,0 +1,53 @@
+generated: '2026-06-20'
+method: derived
+format: aws-json
+source: >-
+  Derived from 4xx/5xx responses in openapi/amazon-codebuild-openapi.yml; titles
+  and remediation enriched from the AWS CodeBuild API Reference Common Errors
+  (https://docs.aws.amazon.com/codebuild/latest/APIReference/CommonErrors.html).
+note: >-
+  CodeBuild returns AWS JSON 1.1 error bodies ({"__type": "...", "message": "..."})
+  rather than RFC 9457 application/problem+json. The 'type' below is the AWS
+  exception name from the __type field.
+problems:
+  - status: 400
+    type: InvalidInputException
+    title: Invalid input
+    remediation: >-
+      Correct the malformed or invalid input parameters and retry the request.
+    source_operations:
+      - openapi/amazon-codebuild-openapi.yml#CreateProject
+      - openapi/amazon-codebuild-openapi.yml#ListProjects
+      - openapi/amazon-codebuild-openapi.yml#DeleteProject
+      - openapi/amazon-codebuild-openapi.yml#StartBuild
+      - openapi/amazon-codebuild-openapi.yml#StopBuild
+      - openapi/amazon-codebuild-openapi.yml#BatchGetBuilds
+  - status: 404
+    type: ResourceNotFoundException
+    title: Resource not found
+    remediation: >-
+      Verify the referenced project or build identifier exists in the account and
+      region before retrying.
+    source_operations:
+      - openapi/amazon-codebuild-openapi.yml#StartBuild
+      - openapi/amazon-codebuild-openapi.yml#StopBuild
+  - status: 409
+    type: ResourceAlreadyExistsException
+    title: Resource already exists
+    remediation: >-
+      Choose a unique project name or update the existing project instead of
+      creating a duplicate.
+    source_operations:
+      - openapi/amazon-codebuild-openapi.yml#CreateProject
+  - status: 500
+    type: InternalServerException
+    title: Internal server error
+    remediation: >-
+      A transient service-side error occurred; retry with exponential backoff.
+    source_operations:
+      - openapi/amazon-codebuild-openapi.yml#CreateProject
+      - openapi/amazon-codebuild-openapi.yml#ListProjects
+      - openapi/amazon-codebuild-openapi.yml#DeleteProject
+      - openapi/amazon-codebuild-openapi.yml#StartBuild
+      - openapi/amazon-codebuild-openapi.yml#StopBuild
+      - openapi/amazon-codebuild-openapi.yml#BatchGetBuilds

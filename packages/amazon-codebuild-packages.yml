@@ -1,0 +1,60 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  AWS SDK service-specific client packages for CodeBuild, verified live on each
+  public registry (npm, PyPI, Maven Central, pkg.go.dev, NuGet, RubyGems,
+  Packagist, crates.io).
+packages:
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-codebuild"
+    url: https://www.npmjs.com/package/@aws-sdk/client-codebuild
+    install: npm install @aws-sdk/client-codebuild
+    official: true
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    note: >-
+      CodeBuild is accessed via the boto3 'codebuild' client; low-level bindings
+      are provided by botocore.
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/codebuild
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/codebuild
+    install: go get github.com/aws/aws-sdk-go-v2/service/codebuild
+    official: true
+  - language: java
+    registry: maven-central
+    name: software.amazon.awssdk:codebuild
+    url: https://central.sonatype.com/artifact/software.amazon.awssdk/codebuild
+    install: >-
+      <dependency><groupId>software.amazon.awssdk</groupId><artifactId>codebuild</artifactId></dependency>
+    official: true
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.CodeBuild
+    url: https://www.nuget.org/packages/AWSSDK.CodeBuild
+    install: dotnet add package AWSSDK.CodeBuild
+    official: true
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-codebuild
+    url: https://rubygems.org/gems/aws-sdk-codebuild
+    install: gem install aws-sdk-codebuild
+    official: true
+  - language: php
+    registry: packagist
+    name: aws/aws-sdk-php
+    url: https://packagist.org/packages/aws/aws-sdk-php
+    install: composer require aws/aws-sdk-php
+    official: true
+    note: CodeBuild is exposed via the CodeBuildClient in the umbrella AWS SDK for PHP.
+  - language: rust
+    registry: crates.io
+    name: aws-sdk-codebuild
+    url: https://crates.io/crates/aws-sdk-codebuild
+    install: cargo add aws-sdk-codebuild
+    official: true
