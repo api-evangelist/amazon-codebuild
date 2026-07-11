@@ -48,6 +48,14 @@ apis:
       - type: ErrorCatalog
         url: errors/amazon-codebuild-problem-types.yml
 common:
+  - type: TrustCenter
+    url: security/amazon-codebuild-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-codebuild-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-codebuild-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-codebuild-authentication.yml
   - type: GettingStarted
     url: https://aws.amazon.com/codebuild/getting-started/
   - type: Authentication
