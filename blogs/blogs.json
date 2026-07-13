@@ -1,6 +1,28 @@
 {
   "repo": "amazon-codebuild",
-  "feeds": [ { "source": "https://aws.amazon.com/blogs/devops/tag/aws-codebuild/feed/", "feed_url": "https://aws.amazon.com/blogs/devops/tag/aws-codebuild/feed/", "title": "AWS CodeBuild – AWS DevOps & Developer Productivity Blog", "saved": 20 } ],
-  "fetched": "2026-07-04T13:39:37Z",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/devops/tag/aws-codebuild/feed/",
+      "feed_url": "https://aws.amazon.com/blogs/devops/tag/aws-codebuild/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://health.aws.amazon.com/health/status",
+      "feed_url": "https://health.aws.amazon.com/health/status",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://stackoverflow.com/questions/tagged/aws-codebuild",
+      "feed_url": "https://stackoverflow.com/feeds/tag?tagnames=aws-codebuild&sort=newest",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 20
 }

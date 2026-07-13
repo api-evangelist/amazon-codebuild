@@ -1,161 +1,184 @@
-extends: "spectral:oas"
-
+# amazon-codebuild — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 60% of servers already https (warn)
+#   - query-params-casing: camel @ 100% (n=24)
+#   - operationid-casing: pascal @ 100% (n=51)
+#   - schema-names-casing: pascal @ 100% (n=260)
+#   - schema-properties-casing: camel @ 66% (n=593)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - pagination params observed: ['maxResults', 'nextToken']
+#   - merge: kept 18 existing, added 4 measured, upgraded 0
+#   - added: query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing
+extends:
+  - spectral:oas
 rules:
-
-  # INFO / METADATA
   info-title-format:
     description: API title should identify Amazon CodeBuild service
     severity: warn
-    given: "$.info.title"
+    given: $.info.title
     then:
       function: pattern
       functionOptions:
-        match: "^CodeBuild"
-
+        match: ^CodeBuild
   info-description-required:
     description: API must have a description
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: API must have a version
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: version
       function: truthy
-
-  # OPENAPI VERSION
   openapi-version-3:
     description: Must use OpenAPI 3.0.x
     severity: warn
-    given: "$.openapi"
+    given: $.openapi
     then:
       function: pattern
       functionOptions:
-        match: '^3\.0\.'
-
-  # SERVERS
+        match: ^3\.0\.
   servers-defined:
     description: Servers must be defined
     severity: error
-    given: "$"
+    given: $
     then:
       field: servers
       function: truthy
-
   servers-https:
     description: All server URLs must use HTTPS
     severity: error
-    given: "$.servers[*].url"
+    given: $.servers[*].url
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
-  # OPERATIONS
+        match: ^https://
   operation-summary-required:
     description: Every operation must have a summary
     severity: error
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: summary
       function: truthy
-
   operation-summary-company-prefix:
     description: Operation summaries should start with Amazon CodeBuild
     severity: warn
-    given: "$.paths[*][get,post,put,delete,patch].summary"
+    given: $.paths[*][get,post,put,delete,patch].summary
     then:
       function: pattern
       functionOptions:
-        match: "^Amazon CodeBuild"
-
+        match: ^Amazon CodeBuild
   operation-description-required:
     description: Every operation must have a description
     severity: warn
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: description
       function: truthy
-
   operation-operationId-required:
     description: Every operation must have an operationId
     severity: error
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: operationId
       function: truthy
-
   operation-tags-required:
     description: Every operation must have tags
     severity: warn
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: tags
       function: truthy
-
-  # PARAMETERS
   parameter-description-required:
     description: Every parameter must have a description
     severity: warn
-    given: "$.paths[*][*].parameters[*]"
+    given: $.paths[*][*].parameters[*]
     then:
       field: description
       function: truthy
-
-  # RESPONSES
   response-success-required:
     description: Every operation must define at least one 2xx response
     severity: error
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: responses
       function: truthy
-
   response-description-required:
     description: Every response must have a description
     severity: error
-    given: "$.paths[*][*].responses[*]"
+    given: $.paths[*][*].responses[*]
     then:
       field: description
       function: truthy
-
-  # SCHEMAS
   schema-type-required:
     description: Schema components should have a type defined
     severity: warn
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: type
       function: truthy
-
-  # SECURITY
   security-schemes-defined:
     description: Security schemes must be defined
     severity: error
-    given: "$.components"
+    given: $.components
     then:
       field: securitySchemes
       function: truthy
-
-  # GENERAL QUALITY
   no-empty-descriptions:
     description: Descriptions must not be empty strings
     severity: warn
-    given: "$..description"
+    given: $..description
     then:
       function: pattern
       functionOptions:
-        match: ".+"
-
+        match: .+
   operation-microcks-operation:
     description: Operations should include x-microcks-operation for mock compatibility
     severity: info
-    given: "$.paths[*][get,post,put,delete,patch]"
+    given: $.paths[*][get,post,put,delete,patch]
     then:
       field: x-microcks-operation
       function: truthy
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: camel
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[a-z][A-Za-z0-9]*$
