@@ -48,6 +48,8 @@ apis:
       - type: ErrorCatalog
         url: errors/amazon-codebuild-problem-types.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-codebuild-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-codebuild-trust-center.yml
   - type: VulnerabilityDisclosure
