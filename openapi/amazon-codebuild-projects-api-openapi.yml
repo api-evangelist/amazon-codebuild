@@ -1,0 +1,458 @@
+openapi: 3.0.0
+info:
+  version: '2016-10-06'
+  x-release: v4
+  title: AWS CodeBuild Builds Projects API
+  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: codebuild
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://codebuild.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS CodeBuild multi-region endpoint
+- url: https://codebuild.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS CodeBuild multi-region endpoint
+- url: http://codebuild.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS CodeBuild endpoint for China (Beijing) and China (Ningxia)
+- url: https://codebuild.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS CodeBuild endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Projects
+  description: Operations for creating and managing build projects
+paths:
+  /projects:
+    post:
+      operationId: CreateProject
+      summary: Amazon CodeBuild Create a Build Project
+      description: Creates a build project. A build project includes information about how to run a build, including where to get the source code, which build environment to use, which build commands to run, and where to store the build output.
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectRequest'
+            examples:
+              CreateProjectRequestExample:
+                summary: Default CreateProject request
+                x-microcks-default: true
+                value:
+                  name: example-resource
+                  description: Example description
+                  source:
+                    type: CODECOMMIT
+                    location: example-value
+                    buildspec: example-value
+                  environment:
+                    type: WINDOWS_CONTAINER
+                    image: example-value
+                    computeType: BUILD_GENERAL1_SMALL
+                    environmentVariables:
+                    - {}
+                  serviceRole: example-value
+                  timeoutInMinutes: 1718153645993
+      responses:
+        '200':
+          description: Project created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateProjectResponse'
+              examples:
+                CreateProject200Example:
+                  summary: Default CreateProject 200 response
+                  x-microcks-default: true
+                  value:
+                    project:
+                      name: example-resource
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      description: Example description
+                      created: example-value
+                      lastModified: example-value
+                      serviceRole: example-value
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                CreateProject400Example:
+                  summary: Default CreateProject 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '409':
+          description: Resource already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceAlreadyExistsException'
+              examples:
+                CreateProject409Example:
+                  summary: Default CreateProject 409 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                CreateProject500Example:
+                  summary: Default CreateProject 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: ListProjects
+      summary: Amazon CodeBuild List Build Projects
+      description: Gets a list of build project names, with each build project name representing a single build project.
+      tags:
+      - Projects
+      parameters:
+      - name: sortBy
+        in: query
+        description: The criterion to sort the list of build projects.
+        schema:
+          type: string
+          enum:
+          - NAME
+          - CREATED_TIME
+          - LAST_MODIFIED_TIME
+      - name: sortOrder
+        in: query
+        description: The order to sort the list.
+        schema:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+      - name: nextToken
+        in: query
+        description: Token for pagination.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListProjectsResponse'
+              examples:
+                ListProjects200Example:
+                  summary: Default ListProjects 200 response
+                  x-microcks-default: true
+                  value:
+                    projects:
+                    - example-value
+                    nextToken: example-value
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                ListProjects400Example:
+                  summary: Default ListProjects 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                ListProjects500Example:
+                  summary: Default ListProjects 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /projects/{projectName}:
+    delete:
+      operationId: DeleteProject
+      summary: Amazon CodeBuild Delete a Build Project
+      description: Deletes a build project. When you delete a project, its builds are not deleted.
+      tags:
+      - Projects
+      parameters:
+      - name: projectName
+        in: path
+        required: true
+        description: The name of the build project.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Project deleted
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                DeleteProject400Example:
+                  summary: Default DeleteProject 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                DeleteProject500Example:
+                  summary: Default DeleteProject 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListProjectsResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            type: string
+        nextToken:
+          type: string
+    CreateProjectRequest:
+      type: object
+      required:
+      - name
+      - source
+      - environment
+      - serviceRole
+      properties:
+        name:
+          type: string
+          description: The name of the build project.
+        description:
+          type: string
+          description: A description of the build project.
+        source:
+          type: object
+          required:
+          - type
+          properties:
+            type:
+              type: string
+              enum:
+              - CODECOMMIT
+              - CODEPIPELINE
+              - GITHUB
+              - GITHUB_ENTERPRISE
+              - BITBUCKET
+              - S3
+              - NO_SOURCE
+            location:
+              type: string
+            buildspec:
+              type: string
+        environment:
+          type: object
+          required:
+          - type
+          - image
+          - computeType
+          properties:
+            type:
+              type: string
+              enum:
+              - WINDOWS_CONTAINER
+              - LINUX_CONTAINER
+              - LINUX_GPU_CONTAINER
+              - ARM_CONTAINER
+            image:
+              type: string
+            computeType:
+              type: string
+              enum:
+              - BUILD_GENERAL1_SMALL
+              - BUILD_GENERAL1_MEDIUM
+              - BUILD_GENERAL1_LARGE
+              - BUILD_GENERAL1_2XLARGE
+            environmentVariables:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  value:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                    - PLAINTEXT
+                    - PARAMETER_STORE
+                    - SECRETS_MANAGER
+        serviceRole:
+          type: string
+          description: The ARN of the IAM role for CodeBuild.
+        timeoutInMinutes:
+          type: integer
+          description: Build timeout in minutes.
+    CreateProjectResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/Project'
+    Project:
+      type: object
+      properties:
+        name:
+          type: string
+        arn:
+          type: string
+        description:
+          type: string
+        created:
+          type: string
+          format: date-time
+        lastModified:
+          type: string
+          format: date-time
+        serviceRole:
+          type: string
+    ResourceAlreadyExistsException:
+      type: object
+      properties:
+        message:
+          type: string
+    InternalServerException:
+      type: object
+      properties:
+        message:
+          type: string
+    InvalidInputException:
+      type: object
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/codebuild/
+x-hasEquivalentPaths: true

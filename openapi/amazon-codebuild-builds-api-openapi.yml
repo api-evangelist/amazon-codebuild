@@ -1,0 +1,465 @@
+openapi: 3.0.0
+info:
+  version: '2016-10-06'
+  x-release: v4
+  title: AWS CodeBuild Builds API
+  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  x-logo:
+    url: https://twitter.com/awscloud/profile_image?size=original
+    backgroundColor: '#FFFFFF'
+  termsOfService: https://aws.amazon.com/service-terms/
+  contact:
+    name: Mike Ralphson
+    email: mike.ralphson@gmail.com
+    url: https://github.com/mermade/aws2openapi
+    x-twitter: PermittedSoc
+  license:
+    name: Apache 2.0 License
+    url: http://www.apache.org/licenses/
+  x-providerName: amazonaws.com
+  x-serviceName: codebuild
+  x-origin:
+  - contentType: application/json
+    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
+    converter:
+      url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
+    x-apisguru-driver: external
+  x-apiClientRegistration:
+    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
+  x-apisguru-categories:
+  - cloud
+  x-preferred: true
+servers:
+- url: http://codebuild.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS CodeBuild multi-region endpoint
+- url: https://codebuild.{region}.amazonaws.com
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - us-gov-west-1
+      - us-gov-east-1
+      - ca-central-1
+      - eu-north-1
+      - eu-west-1
+      - eu-west-2
+      - eu-west-3
+      - eu-central-1
+      - eu-south-1
+      - af-south-1
+      - ap-northeast-1
+      - ap-northeast-2
+      - ap-northeast-3
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-east-1
+      - ap-south-1
+      - sa-east-1
+      - me-south-1
+      default: us-east-1
+  description: The AWS CodeBuild multi-region endpoint
+- url: http://codebuild.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS CodeBuild endpoint for China (Beijing) and China (Ningxia)
+- url: https://codebuild.{region}.amazonaws.com.cn
+  variables:
+    region:
+      description: The AWS region
+      enum:
+      - cn-north-1
+      - cn-northwest-1
+      default: cn-north-1
+  description: The AWS CodeBuild endpoint for China (Beijing) and China (Ningxia)
+security:
+- hmac: []
+tags:
+- name: Builds
+  description: Operations for starting, stopping, and viewing builds
+paths:
+  /builds/start:
+    post:
+      operationId: StartBuild
+      summary: Amazon CodeBuild Start a Build
+      description: Starts running a build with the settings defined in the project.
+      tags:
+      - Builds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartBuildRequest'
+            examples:
+              StartBuildRequestExample:
+                summary: Default StartBuild request
+                x-microcks-default: true
+                value:
+                  projectName: example-resource
+                  sourceVersion: 1.0.0
+                  environmentVariablesOverride:
+                  - name: example-resource
+                    value: example-value
+                    type: STANDARD
+      responses:
+        '200':
+          description: Build started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartBuildResponse'
+              examples:
+                StartBuild200Example:
+                  summary: Default StartBuild 200 response
+                  x-microcks-default: true
+                  value:
+                    build:
+                      id: '500123'
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      buildNumber: 1
+                      startTime: example-value
+                      endTime: example-value
+                      currentPhase: example-value
+                      buildStatus: SUCCEEDED
+                      projectName: example-resource
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                StartBuild400Example:
+                  summary: Default StartBuild 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                StartBuild404Example:
+                  summary: Default StartBuild 404 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                StartBuild500Example:
+                  summary: Default StartBuild 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /builds/stop:
+    post:
+      operationId: StopBuild
+      summary: Amazon CodeBuild Stop a Build
+      description: Attempts to stop running a build.
+      tags:
+      - Builds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - id
+              properties:
+                id:
+                  type: string
+                  description: The ID of the build to stop.
+            examples:
+              StopBuildRequestExample:
+                summary: Default StopBuild request
+                x-microcks-default: true
+                value:
+                  id: '500123'
+      responses:
+        '200':
+          description: Build stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopBuildResponse'
+              examples:
+                StopBuild200Example:
+                  summary: Default StopBuild 200 response
+                  x-microcks-default: true
+                  value:
+                    build:
+                      id: '500123'
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      buildNumber: 1
+                      startTime: example-value
+                      endTime: example-value
+                      currentPhase: example-value
+                      buildStatus: SUCCEEDED
+                      projectName: example-resource
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                StopBuild400Example:
+                  summary: Default StopBuild 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFoundException'
+              examples:
+                StopBuild404Example:
+                  summary: Default StopBuild 404 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                StopBuild500Example:
+                  summary: Default StopBuild 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /builds:
+    post:
+      operationId: BatchGetBuilds
+      summary: Amazon CodeBuild Get Build Details
+      description: Gets information about one or more builds.
+      tags:
+      - Builds
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - ids
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: string
+                  description: The IDs of the builds.
+            examples:
+              BatchGetBuildsRequestExample:
+                summary: Default BatchGetBuilds request
+                x-microcks-default: true
+                value:
+                  ids:
+                  - '500123'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchGetBuildsResponse'
+              examples:
+                BatchGetBuilds200Example:
+                  summary: Default BatchGetBuilds 200 response
+                  x-microcks-default: true
+                  value:
+                    builds:
+                    - id: '500123'
+                      arn: arn:aws:service:us-east-1:123456789012:resource/example
+                      buildNumber: 1
+                      startTime: example-value
+                      endTime: example-value
+                      currentPhase: example-value
+                      buildStatus: SUCCEEDED
+                      projectName: example-resource
+                    buildsNotFound:
+                    - example-value
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInputException'
+              examples:
+                BatchGetBuilds400Example:
+                  summary: Default BatchGetBuilds 400 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerException'
+              examples:
+                BatchGetBuilds500Example:
+                  summary: Default BatchGetBuilds 500 response
+                  x-microcks-default: true
+                  value:
+                    message: example-value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    StartBuildResponse:
+      type: object
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+    ResourceNotFoundException:
+      type: object
+      properties:
+        message:
+          type: string
+    Build:
+      type: object
+      properties:
+        id:
+          type: string
+        arn:
+          type: string
+        buildNumber:
+          type: integer
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        currentPhase:
+          type: string
+        buildStatus:
+          type: string
+          enum:
+          - SUCCEEDED
+          - FAILED
+          - FAULT
+          - TIMED_OUT
+          - IN_PROGRESS
+          - STOPPED
+        projectName:
+          type: string
+        sourceVersion:
+          type: string
+    StopBuildResponse:
+      type: object
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+    StartBuildRequest:
+      type: object
+      required:
+      - projectName
+      properties:
+        projectName:
+          type: string
+          description: The name of the CodeBuild build project.
+        sourceVersion:
+          type: string
+          description: The version of the build input to be built.
+        environmentVariablesOverride:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              type:
+                type: string
+    BatchGetBuildsResponse:
+      type: object
+      properties:
+        builds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Build'
+        buildsNotFound:
+          type: array
+          items:
+            type: string
+    InternalServerException:
+      type: object
+      properties:
+        message:
+          type: string
+    InvalidInputException:
+      type: object
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    hmac:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: Amazon Signature authorization v4
+      x-amazon-apigateway-authtype: awsSigv4
+externalDocs:
+  description: Amazon Web Services documentation
+  url: https://docs.aws.amazon.com/codebuild/
+x-hasEquivalentPaths: true
