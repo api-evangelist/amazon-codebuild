@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS CodeBuild Builds Projects API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon CodeBuild List Build Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://codebuild.{region}.amazonaws.com/projects",
+            "params": [
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query",
+                "description": "The criterion to sort the list of build projects."
+              },
+              {
+                "name": "sortOrder",
+                "value": "",
+                "type": "query",
+                "description": "The order to sort the list."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Token for pagination."
+              }
+            ]
+          },
+          "docs": "Gets a list of build project names, with each build project name representing a single build project."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeBuild Create a Build Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codebuild.{region}.amazonaws.com/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a build project. A build project includes information about how to run a build, including where to get the source code, which build environment to use, which build commands to run, and where to store the build output."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeBuild Delete a Build Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://codebuild.{region}.amazonaws.com/projects/:projectName",
+            "params": [
+              {
+                "name": "projectName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the build project."
+              }
+            ]
+          },
+          "docs": "Deletes a build project. When you delete a project, its builds are not deleted."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

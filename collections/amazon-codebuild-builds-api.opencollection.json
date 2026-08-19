@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS CodeBuild Builds API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Builds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon CodeBuild Start a Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codebuild.{region}.amazonaws.com/builds/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts running a build with the settings defined in the project."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeBuild Stop a Build",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codebuild.{region}.amazonaws.com/builds/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Attempts to stop running a build."
+        },
+        {
+          "info": {
+            "name": "Amazon CodeBuild Get Build Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://codebuild.{region}.amazonaws.com/builds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets information about one or more builds."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
