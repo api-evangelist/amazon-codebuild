@@ -24,6 +24,14 @@ tags:
   - Amazon
   - AWS
   - CI/CD
+  - Builds
+  - Continuous Integration
+  - DevOps
+  - Testing
+tags_raw:
+  - Amazon
+  - AWS
+  - CI/CD
   - Build
   - Continuous Integration
   - DevOps
@@ -55,6 +63,8 @@ apis:
     humanURL: https://docs.aws.amazon.com/codebuild/latest/APIReference/Welcome.html
     baseURL: https://codebuild.us-east-1.amazonaws.com
     tags:
+      - Project
+    tags_raw:
       - Projects
     properties:
       - type: OpenAPI
@@ -540,7 +550,8 @@ apis:
       #x amz target=codebuild 20161006.listcuratedenvironmentimages.
     humanURL: https://docs.aws.amazon.com/codebuild/latest/APIReference/Welcome.html
     baseURL: https://codebuild.us-east-1.amazonaws.com
-    tags:
+    tags: []
+    tags_raw:
       - '#X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages'
     properties:
       - type: OpenAPI
