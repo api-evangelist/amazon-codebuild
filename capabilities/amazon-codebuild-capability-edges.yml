@@ -1,0 +1,247 @@
+slug: amazon-codebuild
+provider: Amazon CodeBuild
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 25
+edges:
+- tag: '#X Amz Target=CodeBuild 20161006.StartBuild'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-startbuild-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.95
+  evidence: '"StartBuild  Amazon CodeBuild Start Build"; schemas "StartBuildInput", "ProjectArtifacts",
+    "BuildPhase"'
+  reason: Triggers a build that compiles source and produces artefacts — the core continuous integration
+    operation.
+- tag: '#X Amz Target=CodeBuild 20161006.ListBuildsForProject'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-listbuildsforproject-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: ListBuildsForProject  Amazon CodeBuild List Builds for Project
+  reason: Lists builds for a given CodeBuild project; the 'Project' noun here is a build configuration,
+    so CI management rather than project management.
+- tag: '#X Amz Target=CodeBuild 20161006.RetryBuild'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-retrybuild-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: '"RetryBuild  Amazon CodeBuild Retry Build"; schemas "BuildPhase", "ProjectSource", "ProjectEnvironment"'
+  reason: Re-running a build in a managed build service is directly continuous integration pipeline execution.
+- tag: '#X Amz Target=CodeBuild 20161006.RetryBuildBatch'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-retrybuildbatch-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: '"RetryBuildBatch"; schemas "BuildBatchPhase", "BuildSummaries", "ResolvedArtifact"'
+  reason: Retries a batch of CI builds and returns build phases/artefacts — build pipeline execution and
+    artefact production.
+- tag: '#X Amz Target=CodeBuild 20161006.StartBuildBatch'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-startbuildbatch-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: '"StartBuildBatch"; schemas "BuildBatchPhases", "ProjectSourceVersion", "ResolvedSecondaryArtifacts"'
+  reason: Starts a batch of CI builds against project sources, producing artefacts — continuous integration
+    pipeline execution.
+- tag: '#X Amz Target=CodeBuild 20161006.StopBuild'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-stopbuild-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: '"StopBuild  Amazon CodeBuild Stop Build"; schemas "StopBuildOutput", "BuildPhase"'
+  reason: Aborting a running build is control of the CI build pipeline.
+- tag: '#X Amz Target=CodeBuild 20161006.StopBuildBatch'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-stopbuildbatch-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: '"StopBuildBatch"; schemas "StopBuildBatchInput", "BuildBatchPhase", "BuildSummaries"'
+  reason: Stops a batch of CI builds — build pipeline execution control in a managed continuous integration
+    service.
+- tag: Builds
+  spec_file: amazon-codebuild-builds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.9
+  evidence: StartBuild  Amazon CodeBuild Start a Build; StopBuild; BatchGetBuilds  Amazon CodeBuild Get
+    Build Details
+  reason: Operations start, stop and inspect builds of source code producing deployable artefacts — the
+    core of Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.ListBuildBatches'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-listbuildbatches-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.88
+  evidence: ListBuildBatches  Amazon CodeBuild List Build Batches
+  reason: Lists batch builds executed by the managed CI service — build pipeline and artefact production,
+    i.e. Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.ListBuildBatchesForProject'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-listbuildbatchesforproject-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.88
+  evidence: ListBuildBatchesForProject  Amazon CodeBuild List Build Batches for Project
+  reason: Lists batch builds for a build project of the managed build service; squarely continuous integration,
+    not project/portfolio management.
+- tag: Projects
+  spec_file: amazon-codebuild-projects-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.88
+  evidence: CreateProject  Amazon CodeBuild Create a Build Project; ListProjects  Amazon CodeBuild List
+    Build Projects
+  reason: Build projects define the CI build pipeline configuration (source, environment, artefacts);
+    managing them is Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.BatchGetBuildBatches'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-batchgetbuildbatches-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: BatchGetBuildBatches; schemas BuildBatchPhase, BuildSummaries, ProjectSource, LogsConfig
+  reason: Retrieves batched build executions in a managed CI build service — Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.BatchGetBuilds'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-batchgetbuilds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: BatchGetBuilds; schemas BuildPhase, ProjectSource, EnvironmentVariables
+  reason: Reads build executions and their phases from the CI build service — Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.BatchGetProjects'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-batchgetprojects-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: BatchGetProjects; schemas ProjectSource, ProjectEnvironment, ProjectBadge, ArtifactsType
+  reason: Build project definitions (source, environment, artifacts) in CodeBuild — CI pipeline configuration,
+    i.e. Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.CreateProject'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-createproject-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: CreateProject  Amazon CodeBuild Create Project; schemas ProjectSource, ProjectEnvironment,
+    ArtifactsType, S3LogsConfig
+  reason: Creates a CodeBuild build project defining source, environment and artefacts — configuring build
+    pipelines, Continuous Integration Management.
+- tag: '#X Amz Target=CodeBuild 20161006.DescribeTestCases'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-describetestcases-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.85
+  evidence: DescribeTestCases — schemas TestCase, TestCases, TestCaseFilter
+  reason: Returns individual test case results from build reports, which is automated test suite and defect
+    management (Software Quality Engineering).
+- tag: '#X Amz Target=CodeBuild 20161006.UpdateProject'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-updateproject-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: '"UpdateProject  Amazon CodeBuild Update Project"; schemas "ProjectSource", "ProjectEnvironment",
+    "ProjectArtifacts", "WebhookBuildType"'
+  reason: Updates the definition of a build project (source, environment, artefacts, webhook triggers)
+    — configuration of CI build pipelines.
+- tag: '#X Amz Target=CodeBuild 20161006.DescribeCodeCoverages'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-describecodecoverages-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.82
+  evidence: DescribeCodeCoverages — schemas CodeCoverage, CodeCoverages, ReportCodeCoverageSortByType,
+    Percentage
+  reason: Retrieves code-coverage metrics from test runs, squarely test strategy / automated test suite
+    stewardship.
+- tag: '#X Amz Target=CodeBuild 20161006.BatchDeleteBuilds'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-batchdeletebuilds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.8
+  evidence: BatchDeleteBuilds; 'CodeBuild is a fully managed build service in the cloud. CodeBuild compiles
+    your source code, runs unit tests, and produces artifacts that are ready to deploy'
+  reason: Managing build records of a CI build service — Continuous Integration Management (build pipelines
+    and artefact production).
+- tag: '#X Amz Target=CodeBuild 20161006.ListProjects'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-listprojects-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.8
+  evidence: 'ListProjects  Amazon CodeBuild List Projects ... schemas: ProjectNames, ProjectSortByType'
+  reason: CodeBuild 'projects' are build configurations of the CI service, so listing them is continuous
+    integration pipeline management, not enterprise project management.
+- tag: '#X Amz Target=CodeBuild 20161006.DeleteBuildBatch'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-deletebuildbatch-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.78
+  evidence: DeleteBuildBatch — schemas BuildIds, BuildsNotDeleted; "CodeBuild compiles your source code,
+    runs unit tests, and produces artifacts"
+  reason: Operation manages batch build records of a managed continuous integration build service, which
+    is continuous integration / build pipeline management.
+- tag: '#X Amz Target=CodeBuild 20161006.InvalidateProjectCache'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-invalidateprojectcache-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.75
+  evidence: InvalidateProjectCache  Amazon CodeBuild Invalidate Project Cache
+  reason: Resets the build cache of a CodeBuild build project; vendor is 'a fully managed continuous integration
+    service' that 'compiles your source code, runs unit tests, and produces artifacts' — build pipeline
+    management.
+- tag: '#X Amz Target=CodeBuild 20161006.ListSharedProjects'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-listsharedprojects-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.75
+  evidence: '"ListSharedProjects  Amazon CodeBuild List Shared Projects"; "CodeBuild is a fully managed
+    build service in the cloud"'
+  reason: Lists CodeBuild build projects — the configuration objects of a managed CI build service, so
+    this surface realises continuous integration management (build pipeline definition), not any business-domain
+    capability.
+- tag: '#X Amz Target=CodeBuild 20161006.BatchGetReports'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-batchgetreports-api-openapi.yml
+  capability_id: BC-4200.50
+  capability_id_l1: BC-4200
+  capability_name: Software Quality Engineering
+  confidence: 0.72
+  evidence: BatchGetReports; schemas TestReportSummary, CodeCoverageReportSummary, ReportStatusCounts
+  reason: Returns test report and code-coverage summaries produced by builds — automated test result management
+    under Software Quality Engineering.
+- tag: '#X Amz Target=CodeBuild 20161006.DeleteProject'
+  spec_file: amazon-codebuild-x-amz-target-codebuild-20161006-deleteproject-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.72
+  evidence: DeleteProject — DeleteProjectInput; "CodeBuild is a fully managed build service in the cloud"
+  reason: A CodeBuild 'project' is a build pipeline definition, not a business project; deleting it is
+    CI pipeline lifecycle management. Not BC-900 Project Management.

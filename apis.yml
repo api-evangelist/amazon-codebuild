@@ -899,6 +899,9 @@ apis:
       - type: ErrorCatalog
         url: errors/amazon-codebuild-problem-types.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/amazon-codebuild-capability-edges.yml
+    name: Amazon CodeBuild Business Capability Map
   - type: Overlay
     url: overlays/amazon-codebuild-openapi-overlay.yaml
   - type: AgenticAccess
