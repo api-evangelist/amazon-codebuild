@@ -564,7 +564,7 @@ apis:
     baseURL: https://codebuild.us-east-1.amazonaws.com
     tags: []
     tags_raw:
-      - '#X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages'
+    - '#X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages'
     properties:
       - type: OpenAPI
         url: openapi/amazon-codebuild-x-amz-target-codebuild-20161006-listcuratedenvironmentimages-api-openapi.yml
