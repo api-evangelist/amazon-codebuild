@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
-  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.UpdateReportGroup API'
+  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.UpdateReportGroup #X Amz Target=CodeBuild 20161006.UpdateReportGroup #X Amz Target=CodeBuild 20161006.UpdateReportGroup API'
   description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
@@ -190,11 +190,25 @@ paths:
       - '#X Amz Target=CodeBuild 20161006.UpdateReportGroup'
 components:
   schemas:
-    ReportPackagingType:
+    ReportGroupStatusType:
       type: string
       enum:
-      - ZIP
-      - NONE
+      - ACTIVE
+      - DELETING
+    ValueInput:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=@+\-]*)$
+      minLength: 0
+      maxLength: 255
+    UpdateReportGroupOutput:
+      type: object
+      properties:
+        reportGroup:
+          allOf:
+          - $ref: '#/components/schemas/ReportGroup'
+          - description: ' Information about the updated report group. '
+    WrapperBoolean:
+      type: boolean
     Tag:
       type: object
       properties:
@@ -207,15 +221,63 @@ components:
           - $ref: '#/components/schemas/ValueInput'
           - description: The tag's value.
       description: <p>A tag, consisting of a key and a value.</p> <p>This tag is available for use by Amazon Web Services services that support tags in CodeBuild.</p>
-    ResourceNotFoundException: {}
+    String:
+      type: string
     NonEmptyString:
       type: string
       minLength: 1
-    WrapperBoolean:
-      type: boolean
-    Timestamp:
+    ReportExportConfig:
+      type: object
+      properties:
+        exportConfigType:
+          allOf:
+          - $ref: '#/components/schemas/ReportExportConfigType'
+          - description: '<p> The export configuration type. Valid values are: </p> <ul> <li> <p> <code>S3</code>: The report results are exported to an S3 bucket. </p> </li> <li> <p> <code>NO_EXPORT</code>: The report results are not exported. </p> </li> </ul>'
+        s3Destination:
+          allOf:
+          - $ref: '#/components/schemas/S3ReportExportConfig'
+          - description: ' A <code>S3ReportExportConfig</code> object that contains information about the S3 bucket where the run of a report is exported. '
+      description: ' Information about the location where the run of a report is exported. '
+    ReportGroupName:
       type: string
-      format: date-time
+      minLength: 2
+      maxLength: 128
+    ReportGroup:
+      type: object
+      properties:
+        arn:
+          allOf:
+          - $ref: '#/components/schemas/NonEmptyString'
+          - description: 'The ARN of the <code>ReportGroup</code>. '
+        name:
+          allOf:
+          - $ref: '#/components/schemas/ReportGroupName'
+          - description: 'The name of the <code>ReportGroup</code>. '
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ReportType'
+          - description: <p>The type of the <code>ReportGroup</code>. This can be one of the following values:</p> <dl> <dt>CODE_COVERAGE</dt> <dd> <p>The report group contains code coverage reports.</p> </dd> <dt>TEST</dt> <dd> <p>The report group contains test reports.</p> </dd> </dl>
+        exportConfig:
+          allOf:
+          - $ref: '#/components/schemas/ReportExportConfig'
+          - description: 'Information about the destination where the raw data of this <code>ReportGroup</code> is exported. '
+        created:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: 'The date and time this <code>ReportGroup</code> was created. '
+        lastModified:
+          allOf:
+          - $ref: '#/components/schemas/Timestamp'
+          - description: 'The date and time this <code>ReportGroup</code> was last modified. '
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/TagList'
+          - description: <p>A list of tag key and value pairs associated with this report group. </p> <p>These tags are available for use by Amazon Web Services services that support CodeBuild report group tags.</p>
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ReportGroupStatusType'
+          - description: <p>The status of the report group. This property is read-only.</p> <p>This can be one of the following values:</p> <dl> <dt>ACTIVE</dt> <dd> <p>The report group is active.</p> </dd> <dt>DELETING</dt> <dd> <p>The report group is in the process of being deleted.</p> </dd> </dl>
+      description: 'A series of reports. Each report contains information about the results from running a series of test cases. You specify the test cases for a report group in the buildspec for a build project using one or more paths to the test case files. '
     UpdateReportGroupInput:
       type: object
       required:
@@ -234,12 +296,20 @@ components:
           allOf:
           - $ref: '#/components/schemas/TagList'
           - description: <p> An updated list of tag key and value pairs associated with this report group. </p> <p>These tags are available for use by Amazon Web Services services that support CodeBuild report group tags.</p>
-    TagList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Tag'
-      minItems: 0
-      maxItems: 50
+    Timestamp:
+      type: string
+      format: date-time
+    KeyInput:
+      type: string
+      pattern: ^([\p{L}\p{Z}\p{N}_.:/=@+\-]*)$
+      minLength: 1
+      maxLength: 127
+    ReportPackagingType:
+      type: string
+      enum:
+      - ZIP
+      - NONE
+    InvalidInputException: {}
     ReportType:
       type: string
       enum:
@@ -278,92 +348,16 @@ components:
           - $ref: '#/components/schemas/WrapperBoolean'
           - description: ' A boolean value that specifies if the results of a report are encrypted. '
       description: ' Information about the S3 bucket where the raw data of a report are exported. '
-    ReportGroupStatusType:
-      type: string
-      enum:
-      - ACTIVE
-      - DELETING
-    ReportGroupName:
-      type: string
-      minLength: 2
-      maxLength: 128
-    ReportExportConfig:
-      type: object
-      properties:
-        exportConfigType:
-          allOf:
-          - $ref: '#/components/schemas/ReportExportConfigType'
-          - description: '<p> The export configuration type. Valid values are: </p> <ul> <li> <p> <code>S3</code>: The report results are exported to an S3 bucket. </p> </li> <li> <p> <code>NO_EXPORT</code>: The report results are not exported. </p> </li> </ul>'
-        s3Destination:
-          allOf:
-          - $ref: '#/components/schemas/S3ReportExportConfig'
-          - description: ' A <code>S3ReportExportConfig</code> object that contains information about the S3 bucket where the run of a report is exported. '
-      description: ' Information about the location where the run of a report is exported. '
-    String:
-      type: string
-    KeyInput:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=@+\-]*)$
-      minLength: 1
-      maxLength: 127
-    UpdateReportGroupOutput:
-      type: object
-      properties:
-        reportGroup:
-          allOf:
-          - $ref: '#/components/schemas/ReportGroup'
-          - description: ' Information about the updated report group. '
-    ReportGroup:
-      type: object
-      properties:
-        arn:
-          allOf:
-          - $ref: '#/components/schemas/NonEmptyString'
-          - description: 'The ARN of the <code>ReportGroup</code>. '
-        name:
-          allOf:
-          - $ref: '#/components/schemas/ReportGroupName'
-          - description: 'The name of the <code>ReportGroup</code>. '
-        type:
-          allOf:
-          - $ref: '#/components/schemas/ReportType'
-          - description: <p>The type of the <code>ReportGroup</code>. This can be one of the following values:</p> <dl> <dt>CODE_COVERAGE</dt> <dd> <p>The report group contains code coverage reports.</p> </dd> <dt>TEST</dt> <dd> <p>The report group contains test reports.</p> </dd> </dl>
-        exportConfig:
-          allOf:
-          - $ref: '#/components/schemas/ReportExportConfig'
-          - description: 'Information about the destination where the raw data of this <code>ReportGroup</code> is exported. '
-        created:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: 'The date and time this <code>ReportGroup</code> was created. '
-        lastModified:
-          allOf:
-          - $ref: '#/components/schemas/Timestamp'
-          - description: 'The date and time this <code>ReportGroup</code> was last modified. '
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/TagList'
-          - description: <p>A list of tag key and value pairs associated with this report group. </p> <p>These tags are available for use by Amazon Web Services services that support CodeBuild report group tags.</p>
-        status:
-          allOf:
-          - $ref: '#/components/schemas/ReportGroupStatusType'
-          - description: <p>The status of the report group. This property is read-only.</p> <p>This can be one of the following values:</p> <dl> <dt>ACTIVE</dt> <dd> <p>The report group is active.</p> </dd> <dt>DELETING</dt> <dd> <p>The report group is in the process of being deleted.</p> </dd> </dl>
-      description: 'A series of reports. Each report contains information about the results from running a series of test cases. You specify the test cases for a report group in the buildspec for a build project using one or more paths to the test case files. '
-    ValueInput:
-      type: string
-      pattern: ^([\p{L}\p{Z}\p{N}_.:/=@+\-]*)$
-      minLength: 0
-      maxLength: 255
-    InvalidInputException: {}
+    ResourceNotFoundException: {}
+    TagList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Tag'
+      minItems: 0
+      maxItems: 50
   parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -374,8 +368,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string
@@ -392,8 +392,8 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
