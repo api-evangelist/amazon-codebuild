@@ -1,115 +1,19 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
-  x-release: v4
-  title: AWS CodeBuild Builds API
-  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
-  x-logo:
-    url: https://twitter.com/awscloud/profile_image?size=original
-    backgroundColor: '#FFFFFF'
-  termsOfService: https://aws.amazon.com/service-terms/
+  title: Amazon CodeBuild Builds API
+  description: AWS CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages that are ready to deploy. With CodeBuild, you don't need to provision, manage, and scale your own build servers. CodeBuild scales continuously and processes multiple builds concurrently.
+  version: '2016-10-06'
   contact:
-    name: Mike Ralphson
-    email: mike.ralphson@gmail.com
-    url: https://github.com/mermade/aws2openapi
-    x-twitter: PermittedSoc
-  license:
-    name: Apache 2.0 License
-    url: http://www.apache.org/licenses/
-  x-providerName: amazonaws.com
-  x-serviceName: codebuild
-  x-origin:
-  - contentType: application/json
-    url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
-    converter:
-      url: https://github.com/mermade/aws2openapi
-    x-apisguru-driver: external
-  x-apiClientRegistration:
-    url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
-  x-apisguru-categories:
-  - cloud
-  x-preferred: true
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
 servers:
-- url: http://codebuild.{region}.amazonaws.com
-  variables:
-    region:
-      description: The AWS region
-      enum:
-      - us-east-1
-      - us-east-2
-      - us-west-1
-      - us-west-2
-      - us-gov-west-1
-      - us-gov-east-1
-      - ca-central-1
-      - eu-north-1
-      - eu-west-1
-      - eu-west-2
-      - eu-west-3
-      - eu-central-1
-      - eu-south-1
-      - af-south-1
-      - ap-northeast-1
-      - ap-northeast-2
-      - ap-northeast-3
-      - ap-southeast-1
-      - ap-southeast-2
-      - ap-east-1
-      - ap-south-1
-      - sa-east-1
-      - me-south-1
-      default: us-east-1
-  description: The AWS CodeBuild multi-region endpoint
 - url: https://codebuild.{region}.amazonaws.com
+  description: Amazon CodeBuild Regional Endpoint
   variables:
     region:
-      description: The AWS region
-      enum:
-      - us-east-1
-      - us-east-2
-      - us-west-1
-      - us-west-2
-      - us-gov-west-1
-      - us-gov-east-1
-      - ca-central-1
-      - eu-north-1
-      - eu-west-1
-      - eu-west-2
-      - eu-west-3
-      - eu-central-1
-      - eu-south-1
-      - af-south-1
-      - ap-northeast-1
-      - ap-northeast-2
-      - ap-northeast-3
-      - ap-southeast-1
-      - ap-southeast-2
-      - ap-east-1
-      - ap-south-1
-      - sa-east-1
-      - me-south-1
       default: us-east-1
-  description: The AWS CodeBuild multi-region endpoint
-- url: http://codebuild.{region}.amazonaws.com.cn
-  variables:
-    region:
-      description: The AWS region
-      enum:
-      - cn-north-1
-      - cn-northwest-1
-      default: cn-north-1
-  description: The AWS CodeBuild endpoint for China (Beijing) and China (Ningxia)
-- url: https://codebuild.{region}.amazonaws.com.cn
-  variables:
-    region:
-      description: The AWS region
-      enum:
-      - cn-north-1
-      - cn-northwest-1
-      default: cn-north-1
-  description: The AWS CodeBuild endpoint for China (Beijing) and China (Ningxia)
-security:
-- hmac: []
+      description: AWS Region
 tags:
 - name: Builds
   description: Operations for starting, stopping, and viewing builds
@@ -363,6 +267,64 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    StartBuildRequest:
+      type: object
+      required:
+      - projectName
+      properties:
+        projectName:
+          type: string
+          description: The name of the CodeBuild build project.
+        sourceVersion:
+          type: string
+          description: The version of the build input to be built.
+        environmentVariablesOverride:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              type:
+                type: string
+    StopBuildResponse:
+      type: object
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+    BatchGetBuildsResponse:
+      type: object
+      properties:
+        builds:
+          type: array
+          items:
+            $ref: '#/components/schemas/Build'
+        buildsNotFound:
+          type: array
+          items:
+            type: string
+    StartBuildResponse:
+      type: object
+      properties:
+        build:
+          $ref: '#/components/schemas/Build'
+    ResourceNotFoundException:
+      type: object
+      properties:
+        message:
+          type: string
+    InvalidInputException:
+      type: object
+      properties:
+        message:
+          type: string
+    InternalServerException:
+      type: object
+      properties:
+        message:
+          type: string
     Build:
       type: object
       properties:
@@ -393,72 +355,6 @@ components:
           type: string
         sourceVersion:
           type: string
-    StartBuildResponse:
-      type: object
-      properties:
-        build:
-          $ref: '#/components/schemas/Build'
-    StopBuildResponse:
-      type: object
-      properties:
-        build:
-          $ref: '#/components/schemas/Build'
-    ResourceNotFoundException:
-      type: object
-      properties:
-        message:
-          type: string
-    StartBuildRequest:
-      type: object
-      required:
-      - projectName
-      properties:
-        projectName:
-          type: string
-          description: The name of the CodeBuild build project.
-        sourceVersion:
-          type: string
-          description: The version of the build input to be built.
-        environmentVariablesOverride:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              value:
-                type: string
-              type:
-                type: string
-    InvalidInputException:
-      type: object
-      properties:
-        message:
-          type: string
-    BatchGetBuildsResponse:
-      type: object
-      properties:
-        builds:
-          type: array
-          items:
-            $ref: '#/components/schemas/Build'
-        buildsNotFound:
-          type: array
-          items:
-            type: string
-    InternalServerException:
-      type: object
-      properties:
-        message:
-          type: string
-  securitySchemes:
-    hmac:
-      type: apiKey
-      name: Authorization
-      in: header
-      description: Amazon Signature authorization v4
-      x-amazon-apigateway-authtype: awsSigv4
 externalDocs:
-  description: Amazon Web Services documentation
-  url: https://docs.aws.amazon.com/codebuild/
-x-hasEquivalentPaths: true
+  description: Amazon CodeBuild API Reference
+  url: https://docs.aws.amazon.com/codebuild/latest/APIReference/

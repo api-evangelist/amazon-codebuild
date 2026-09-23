@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-10-06'
   x-release: v4
-  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages #X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages #X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages API'
-  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  title: 'AWS CodeBuild #X Amz Target=CodeBuild…'
+  description: 'CodeBuild
+
+    CodeBuild is a fully managed build service in the cloud.'
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -23,6 +25,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -165,12 +168,33 @@ paths:
       - '#X Amz Target=CodeBuild 20161006.ListCuratedEnvironmentImages'
 components:
   schemas:
-    ImageVersions:
+    EnvironmentPlatform:
+      type: object
+      properties:
+        platform:
+          allOf:
+          - $ref: '#/components/schemas/PlatformType'
+          - description: The platform's name.
+        languages:
+          allOf:
+          - $ref: '#/components/schemas/EnvironmentLanguages'
+          - description: The list of programming languages that are available for the specified platform.
+      description: A set of Docker images that are related by platform and are managed by CodeBuild.
+    EnvironmentImages:
       type: array
       items:
-        $ref: '#/components/schemas/String'
-    String:
+        $ref: '#/components/schemas/EnvironmentImage'
+    ListCuratedEnvironmentImagesInput:
+      type: object
+      title: ListCuratedEnvironmentImagesInput
+      properties: {}
+    PlatformType:
       type: string
+      enum:
+      - DEBIAN
+      - AMAZON_LINUX
+      - UBUNTU
+      - WINDOWS_SERVER
     EnvironmentImage:
       type: object
       properties:
@@ -187,17 +211,18 @@ components:
           - $ref: '#/components/schemas/ImageVersions'
           - description: A list of environment image versions.
       description: Information about a Docker image that is managed by CodeBuild.
-    ListCuratedEnvironmentImagesOutput:
-      type: object
-      properties:
-        platforms:
-          allOf:
-          - $ref: '#/components/schemas/EnvironmentPlatforms'
-          - description: Information about supported platforms for Docker images that are managed by CodeBuild.
-    ListCuratedEnvironmentImagesInput:
-      type: object
-      title: ListCuratedEnvironmentImagesInput
-      properties: {}
+    EnvironmentLanguages:
+      type: array
+      items:
+        $ref: '#/components/schemas/EnvironmentLanguage'
+    EnvironmentPlatforms:
+      type: array
+      items:
+        $ref: '#/components/schemas/EnvironmentPlatform'
+    ImageVersions:
+      type: array
+      items:
+        $ref: '#/components/schemas/String'
     EnvironmentLanguage:
       type: object
       properties:
@@ -210,18 +235,15 @@ components:
           - $ref: '#/components/schemas/EnvironmentImages'
           - description: The list of Docker images that are related by the specified programming language.
       description: A set of Docker images that are related by programming language and are managed by CodeBuild.
-    EnvironmentLanguages:
-      type: array
-      items:
-        $ref: '#/components/schemas/EnvironmentLanguage'
-    EnvironmentImages:
-      type: array
-      items:
-        $ref: '#/components/schemas/EnvironmentImage'
-    EnvironmentPlatforms:
-      type: array
-      items:
-        $ref: '#/components/schemas/EnvironmentPlatform'
+    ListCuratedEnvironmentImagesOutput:
+      type: object
+      properties:
+        platforms:
+          allOf:
+          - $ref: '#/components/schemas/EnvironmentPlatforms'
+          - description: Information about supported platforms for Docker images that are managed by CodeBuild.
+    String:
+      type: string
     LanguageType:
       type: string
       enum:
@@ -235,46 +257,9 @@ components:
       - DOTNET
       - BASE
       - PHP
-    EnvironmentPlatform:
-      type: object
-      properties:
-        platform:
-          allOf:
-          - $ref: '#/components/schemas/PlatformType'
-          - description: The platform's name.
-        languages:
-          allOf:
-          - $ref: '#/components/schemas/EnvironmentLanguages'
-          - description: The list of programming languages that are available for the specified platform.
-      description: A set of Docker images that are related by platform and are managed by CodeBuild.
-    PlatformType:
-      type: string
-      enum:
-      - DEBIAN
-      - AMAZON_LINUX
-      - UBUNTU
-      - WINDOWS_SERVER
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
@@ -291,8 +276,26 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string

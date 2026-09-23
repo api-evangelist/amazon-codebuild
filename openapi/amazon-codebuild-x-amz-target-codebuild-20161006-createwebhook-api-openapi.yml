@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-10-06'
   x-release: v4
-  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.CreateWebhook #X Amz Target=CodeBuild 20161006.CreateWebhook #X Amz Target=CodeBuild 20161006.CreateWebhook API'
-  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  title: 'AWS CodeBuild #X Amz Target=CodeBuild…'
+  description: 'CodeBuild
+
+    CodeBuild is a fully managed build service in the cloud.'
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -23,6 +25,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -124,7 +127,10 @@ paths:
     - $ref: '#/components/parameters/X-Amz-SignedHeaders'
     post:
       operationId: CreateWebhook
-      description: <p>For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.</p> <important> <p>If you enable webhooks for an CodeBuild project, and the project is used as a build step in CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using CodePipeline, we recommend that you disable webhooks in CodeBuild. In the CodeBuild console, clear the Webhook box. For more information, see step 5 in <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console">Change a Build Project's Settings</a>.</p> </important>
+      description: 'For an existing CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
+
+
+        If you enable webhooks for an CodeBuild project, and the project is used as a build step in CodePipeline, then two identical builds are created for each commit. One build is triggered through webhooks, and one through CodePipeline. Because billing is on a per-build basis, you are billed for both builds. Therefore, if you are using CodePipeline, we recommend that you disable webhooks in CodeBuild. In the CodeBuild console, clear the Webhook box. For more information, see step 5 in Change a Build Project''s Settings.'
       responses:
         '200':
           description: Success
@@ -212,81 +218,8 @@ paths:
       tags:
       - '#X Amz Target=CodeBuild 20161006.CreateWebhook'
 components:
-  parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    WrapperBoolean:
-      type: boolean
-    String:
-      type: string
-    ProjectName:
-      type: string
-      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{1,254}'
-      minLength: 2
-      maxLength: 255
-    NonEmptyString:
-      type: string
-      minLength: 1
-    WebhookBuildType:
-      type: string
-      enum:
-      - BUILD
-      - BUILD_BATCH
-    CreateWebhookOutput:
-      type: object
-      properties:
-        webhook:
-          allOf:
-          - $ref: '#/components/schemas/Webhook'
-          - description: Information about a webhook that connects repository events to a build project in CodeBuild.
-    Timestamp:
-      type: string
-      format: date-time
-    FilterGroups:
-      type: array
-      items:
-        $ref: '#/components/schemas/FilterGroup'
+    OAuthProviderException: {}
     WebhookFilter:
       type: object
       required:
@@ -306,29 +239,17 @@ components:
           - $ref: '#/components/schemas/WrapperBoolean'
           - description: ' Used to indicate that the <code>pattern</code> determines which webhook events do not trigger a build. If true, then a webhook event that does not match the <code>pattern</code> triggers a build. If false, then a webhook event that matches the <code>pattern</code> triggers a build. '
       description: ' A filter used to determine which webhooks trigger a build. '
-    CreateWebhookInput:
-      type: object
-      required:
-      - projectName
-      title: CreateWebhookInput
-      properties:
-        projectName:
-          allOf:
-          - $ref: '#/components/schemas/ProjectName'
-          - description: The name of the CodeBuild project.
-        branchFilter:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: <p>A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then all branches are built.</p> <note> <p>It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>. </p> </note>
-        filterGroups:
-          allOf:
-          - $ref: '#/components/schemas/FilterGroups'
-          - description: <p>An array of arrays of <code>WebhookFilter</code> objects used to determine which webhooks are triggered. At least one <code>WebhookFilter</code> in the array must specify <code>EVENT</code> as its <code>type</code>. </p> <p>For a build to be triggered, at least one filter group in the <code>filterGroups</code> array must pass. For a filter group to pass, each of its filters must pass. </p>
-        buildType:
-          allOf:
-          - $ref: '#/components/schemas/WebhookBuildType'
-          - description: Specifies the type of build this webhook will trigger.
-    ResourceAlreadyExistsException: {}
+    NonEmptyString:
+      type: string
+      minLength: 1
+    FilterGroups:
+      type: array
+      items:
+        $ref: '#/components/schemas/FilterGroup'
+    ResourceNotFoundException: {}
+    Timestamp:
+      type: string
+      format: date-time
     Webhook:
       type: object
       properties:
@@ -361,11 +282,16 @@ components:
           - $ref: '#/components/schemas/Timestamp'
           - description: 'A timestamp that indicates the last time a repository''s secret token was modified. '
       description: Information about a webhook that connects repository events to a build project in CodeBuild.
+    WrapperBoolean:
+      type: boolean
+    ProjectName:
+      type: string
+      pattern: '[A-Za-z0-9][A-Za-z0-9\-_]{1,254}'
+      minLength: 2
+      maxLength: 255
     InvalidInputException: {}
-    FilterGroup:
-      type: array
-      items:
-        $ref: '#/components/schemas/WebhookFilter'
+    String:
+      type: string
     WebhookFilterType:
       type: string
       enum:
@@ -375,8 +301,88 @@ components:
       - ACTOR_ACCOUNT_ID
       - FILE_PATH
       - COMMIT_MESSAGE
-    ResourceNotFoundException: {}
-    OAuthProviderException: {}
+    CreateWebhookInput:
+      type: object
+      required:
+      - projectName
+      title: CreateWebhookInput
+      properties:
+        projectName:
+          allOf:
+          - $ref: '#/components/schemas/ProjectName'
+          - description: The name of the CodeBuild project.
+        branchFilter:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: <p>A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If <code>branchFilter</code> is empty, then all branches are built.</p> <note> <p>It is recommended that you use <code>filterGroups</code> instead of <code>branchFilter</code>. </p> </note>
+        filterGroups:
+          allOf:
+          - $ref: '#/components/schemas/FilterGroups'
+          - description: <p>An array of arrays of <code>WebhookFilter</code> objects used to determine which webhooks are triggered. At least one <code>WebhookFilter</code> in the array must specify <code>EVENT</code> as its <code>type</code>. </p> <p>For a build to be triggered, at least one filter group in the <code>filterGroups</code> array must pass. For a filter group to pass, each of its filters must pass. </p>
+        buildType:
+          allOf:
+          - $ref: '#/components/schemas/WebhookBuildType'
+          - description: Specifies the type of build this webhook will trigger.
+    ResourceAlreadyExistsException: {}
+    WebhookBuildType:
+      type: string
+      enum:
+      - BUILD
+      - BUILD_BATCH
+    CreateWebhookOutput:
+      type: object
+      properties:
+        webhook:
+          allOf:
+          - $ref: '#/components/schemas/Webhook'
+          - description: Information about a webhook that connects repository events to a build project in CodeBuild.
+    FilterGroup:
+      type: array
+      items:
+        $ref: '#/components/schemas/WebhookFilter'
+  parameters:
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

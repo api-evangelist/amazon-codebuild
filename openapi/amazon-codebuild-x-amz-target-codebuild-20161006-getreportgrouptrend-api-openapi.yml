@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-10-06'
   x-release: v4
-  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.GetReportGroupTrend #X Amz Target=CodeBuild 20161006.GetReportGroupTrend #X Amz Target=CodeBuild 20161006.GetReportGroupTrend API'
-  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  title: 'AWS CodeBuild #X Amz Target=CodeBuild…'
+  description: 'CodeBuild
+
+    CodeBuild is a fully managed build service in the cloud.'
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -23,6 +25,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -191,6 +194,12 @@ paths:
       - '#X Amz Target=CodeBuild 20161006.GetReportGroupTrend'
 components:
   schemas:
+    String:
+      type: string
+    ReportGroupTrendRawDataList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ReportWithRawData'
     GetReportGroupTrendInput:
       type: object
       required:
@@ -210,21 +219,18 @@ components:
           allOf:
           - $ref: '#/components/schemas/ReportGroupTrendFieldType'
           - description: <p>The test report value to accumulate. This must be one of the following values:</p> <dl> <dt>Test reports:</dt> <dd> <dl> <dt>DURATION</dt> <dd> <p>Accumulate the test run times for the specified reports.</p> </dd> <dt>PASS_RATE</dt> <dd> <p>Accumulate the percentage of tests that passed for the specified test reports.</p> </dd> <dt>TOTAL</dt> <dd> <p>Accumulate the total number of tests for the specified test reports.</p> </dd> </dl> </dd> </dl> <dl> <dt>Code coverage reports:</dt> <dd> <dl> <dt>BRANCH_COVERAGE</dt> <dd> <p>Accumulate the branch coverage percentages for the specified test reports.</p> </dd> <dt>BRANCHES_COVERED</dt> <dd> <p>Accumulate the branches covered values for the specified test reports.</p> </dd> <dt>BRANCHES_MISSED</dt> <dd> <p>Accumulate the branches missed values for the specified test reports.</p> </dd> <dt>LINE_COVERAGE</dt> <dd> <p>Accumulate the line coverage percentages for the specified test reports.</p> </dd> <dt>LINES_COVERED</dt> <dd> <p>Accumulate the lines covered values for the specified test reports.</p> </dd> <dt>LINES_MISSED</dt> <dd> <p>Accumulate the lines not covered values for the specified test reports.</p> </dd> </dl> </dd> </dl>
-    PageSize:
-      type: integer
-      minimum: 1
-      maximum: 100
-    GetReportGroupTrendOutput:
-      type: object
-      properties:
-        stats:
-          allOf:
-          - $ref: '#/components/schemas/ReportGroupTrendStats'
-          - description: Contains the accumulated trend data.
-        rawData:
-          allOf:
-          - $ref: '#/components/schemas/ReportGroupTrendRawDataList'
-          - description: An array that contains the raw data for each report.
+    ReportGroupTrendFieldType:
+      type: string
+      enum:
+      - PASS_RATE
+      - DURATION
+      - TOTAL
+      - LINE_COVERAGE
+      - LINES_COVERED
+      - LINES_MISSED
+      - BRANCH_COVERAGE
+      - BRANCHES_COVERED
+      - BRANCHES_MISSED
     ReportGroupTrendStats:
       type: object
       properties:
@@ -241,29 +247,13 @@ components:
           - $ref: '#/components/schemas/String'
           - description: Contains the minimum value analyzed.
       description: Contains trend statistics for a set of reports. The actual values depend on the type of trend being collected. For more information, see .
-    String:
-      type: string
-    ReportGroupTrendFieldType:
-      type: string
-      enum:
-      - PASS_RATE
-      - DURATION
-      - TOTAL
-      - LINE_COVERAGE
-      - LINES_COVERED
-      - LINES_MISSED
-      - BRANCH_COVERAGE
-      - BRANCHES_COVERED
-      - BRANCHES_MISSED
+    PageSize:
+      type: integer
+      minimum: 1
+      maximum: 100
     NonEmptyString:
       type: string
       minLength: 1
-    InvalidInputException: {}
-    ResourceNotFoundException: {}
-    ReportGroupTrendRawDataList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ReportWithRawData'
     ReportWithRawData:
       type: object
       properties:
@@ -276,13 +266,20 @@ components:
           - $ref: '#/components/schemas/String'
           - description: The value of the requested data field from the report.
       description: Contains the unmodified data for the report. For more information, see .
+    GetReportGroupTrendOutput:
+      type: object
+      properties:
+        stats:
+          allOf:
+          - $ref: '#/components/schemas/ReportGroupTrendStats'
+          - description: Contains the accumulated trend data.
+        rawData:
+          allOf:
+          - $ref: '#/components/schemas/ReportGroupTrendRawDataList'
+          - description: An array that contains the raw data for each report.
+    InvalidInputException: {}
+    ResourceNotFoundException: {}
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -295,14 +292,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -313,8 +310,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

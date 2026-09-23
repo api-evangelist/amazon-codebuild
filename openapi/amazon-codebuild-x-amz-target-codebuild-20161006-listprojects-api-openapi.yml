@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-10-06'
   x-release: v4
-  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.ListProjects #X Amz Target=CodeBuild 20161006.ListProjects #X Amz Target=CodeBuild 20161006.ListProjects API'
-  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  title: 'AWS CodeBuild #X Amz Target=CodeBuild 20161006.ListProjects…'
+  description: 'CodeBuild
+
+    CodeBuild is a fully managed build service in the cloud.'
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -23,6 +25,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -186,12 +189,8 @@ paths:
       - '#X Amz Target=CodeBuild 20161006.ListProjects'
 components:
   schemas:
-    ProjectNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/NonEmptyString'
-      minItems: 1
-      maxItems: 100
+    String:
+      type: string
     ListProjectsInput:
       type: object
       title: ListProjectsInput
@@ -208,12 +207,27 @@ components:
           allOf:
           - $ref: '#/components/schemas/NonEmptyString'
           - description: During a previous call, if there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a <i>nextToken</i>. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
-    String:
+    ProjectNames:
+      type: array
+      items:
+        $ref: '#/components/schemas/NonEmptyString'
+      minItems: 1
+      maxItems: 100
+    SortOrderType:
       type: string
+      enum:
+      - ASCENDING
+      - DESCENDING
     NonEmptyString:
       type: string
       minLength: 1
     InvalidInputException: {}
+    ProjectSortByType:
+      type: string
+      enum:
+      - NAME
+      - CREATED_TIME
+      - LAST_MODIFIED_TIME
     ListProjectsOutput:
       type: object
       properties:
@@ -225,24 +239,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/ProjectNames'
           - description: The list of build project names, with each build project name representing a single build project.
-    SortOrderType:
-      type: string
-      enum:
-      - ASCENDING
-      - DESCENDING
-    ProjectSortByType:
-      type: string
-      enum:
-      - NAME
-      - CREATED_TIME
-      - LAST_MODIFIED_TIME
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -255,14 +252,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -273,8 +270,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
       in: header
       schema:
         type: string

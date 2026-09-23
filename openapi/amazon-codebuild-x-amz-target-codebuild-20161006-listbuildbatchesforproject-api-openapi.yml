@@ -1,9 +1,11 @@
 openapi: 3.2.0
 info:
-  version: 1.0.0
+  version: '2016-10-06'
   x-release: v4
-  title: 'AWS CodeBuild Builds #X Amz Target=CodeBuild 20161006.ListBuildBatchesForProject #X Amz Target=CodeBuild 20161006.ListBuildBatchesForProject #X Amz Target=CodeBuild 20161006.ListBuildBatchesForProject API'
-  description: <fullname>CodeBuild</fullname> <p>CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in CodeBuild to use your own build tools. CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about CodeBuild, see the <i> <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild User Guide</a>.</i> </p>
+  title: 'AWS CodeBuild #X Amz Target=CodeBuild…'
+  description: 'CodeBuild
+
+    CodeBuild is a fully managed build service in the cloud.'
   x-logo:
     url: https://twitter.com/awscloud/profile_image?size=original
     backgroundColor: '#FFFFFF'
@@ -23,6 +25,7 @@ info:
     url: https://raw.githubusercontent.com/aws/aws-sdk-js/master/apis/codebuild-2016-10-06.normal.json
     converter:
       url: https://github.com/mermade/aws2openapi
+      version: 1.0.0
     x-apisguru-driver: external
   x-apiClientRegistration:
     url: https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct
@@ -205,30 +208,6 @@ paths:
       - '#X Amz Target=CodeBuild 20161006.ListBuildBatchesForProject'
 components:
   schemas:
-    ListBuildBatchesForProjectOutput:
-      type: object
-      properties:
-        ids:
-          allOf:
-          - $ref: '#/components/schemas/BuildBatchIds'
-          - description: An array of strings that contains the batch build identifiers.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/String'
-          - description: If there are more items to return, this contains a token that is passed to a subsequent call to <code>ListBuildBatchesForProject</code> to retrieve the next set of items.
-    PageSize:
-      type: integer
-      minimum: 1
-      maximum: 100
-    StatusType:
-      type: string
-      enum:
-      - SUCCEEDED
-      - FAILED
-      - FAULT
-      - TIMED_OUT
-      - IN_PROGRESS
-      - STOPPED
     String:
       type: string
     ListBuildBatchesForProjectInput:
@@ -255,6 +234,46 @@ components:
           allOf:
           - $ref: '#/components/schemas/String'
           - description: The <code>nextToken</code> value returned from a previous call to <code>ListBuildBatchesForProject</code>. This specifies the next item to return. To return the beginning of the list, exclude this parameter.
+    SortOrderType:
+      type: string
+      enum:
+      - ASCENDING
+      - DESCENDING
+    StatusType:
+      type: string
+      enum:
+      - SUCCEEDED
+      - FAILED
+      - FAULT
+      - TIMED_OUT
+      - IN_PROGRESS
+      - STOPPED
+    BuildBatchIds:
+      type: array
+      items:
+        $ref: '#/components/schemas/NonEmptyString'
+      minItems: 0
+      maxItems: 100
+    PageSize:
+      type: integer
+      minimum: 1
+      maximum: 100
+    NonEmptyString:
+      type: string
+      minLength: 1
+    InvalidInputException: {}
+    ListBuildBatchesForProjectOutput:
+      type: object
+      properties:
+        ids:
+          allOf:
+          - $ref: '#/components/schemas/BuildBatchIds'
+          - description: An array of strings that contains the batch build identifiers.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/String'
+          - description: If there are more items to return, this contains a token that is passed to a subsequent call to <code>ListBuildBatchesForProject</code> to retrieve the next set of items.
+    ResourceNotFoundException: {}
     BuildBatchFilter:
       type: object
       properties:
@@ -263,29 +282,7 @@ components:
           - $ref: '#/components/schemas/StatusType'
           - description: The status of the batch builds to retrieve. Only batch builds that have this status will be retrieved.
       description: Specifies filters when retrieving batch builds.
-    NonEmptyString:
-      type: string
-      minLength: 1
-    InvalidInputException: {}
-    ResourceNotFoundException: {}
-    BuildBatchIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/NonEmptyString'
-      minItems: 0
-      maxItems: 100
-    SortOrderType:
-      type: string
-      enum:
-      - ASCENDING
-      - DESCENDING
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -298,14 +295,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
+    X-Amz-Credential:
+      name: X-Amz-Credential
       in: header
       schema:
         type: string
@@ -316,8 +313,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
